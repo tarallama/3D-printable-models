@@ -13,6 +13,7 @@ union()
 {
 difference()
 {
+    //Main structural body
     cylinder(
         height,
         radius,
@@ -21,7 +22,7 @@ difference()
         $fs = $fs
     );
     
-    //Slit
+    //Chop out the slit
     width = 1.5;
     slitHeight = 12;
     translate(
@@ -42,7 +43,7 @@ difference()
         );
     }
     
-    //Inner cone
+    //Chop out the inner cone
     translate(
         [
             0,
@@ -58,9 +59,7 @@ difference()
             );
         }
         
-    
-        
-    //Inside of Threads
+    //Add space for the threads
     threadHeight = 16;
     translate(
         [
@@ -79,7 +78,6 @@ difference()
 }
 thread_in(10,16,thr=30);
 }
-
 
     //Chop off half the cylinder
     translate(
@@ -100,6 +98,7 @@ thread_in(10,16,thr=30);
         );
     }
     
+    //Chop out inner cavity
     translate(
         [
             0,
