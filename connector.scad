@@ -134,6 +134,21 @@ module innerCavity()
     }
 }
 
+module threads()
+{
+    translate
+    (
+        [
+            0,
+            0,
+            -0.5
+        ]
+    )
+    {
+        thread_in(10,16,thr=30);
+    }
+}
+
 difference()
 {
     union()
@@ -145,7 +160,7 @@ difference()
             core();
             threadZone();
         }
-        thread_in(10,16,thr=30);
+        threads();
     }
     chopOffHalf();
     innerCavity();
