@@ -4,6 +4,7 @@ height = 25;
 coneHeight = 6;
 coneLowerDiam = 12/2;
 coneZPos = height-coneHeight-1;
+cylHeight = 4;
 use <ISOThread.scad>;
 
 difference()
@@ -19,8 +20,6 @@ difference()
         center = false,
         $fs = $fs
     );
-
-
     
     //Slit
     width = 1.5;
@@ -59,21 +58,7 @@ difference()
             );
         }
         
-    cylHeight = 4;
-    translate(
-        [
-            0,
-            0,
-            coneZPos-cylHeight
-        ]
-        )
-        {
-            cylinder(
-                cylHeight+0.5,
-                coneLowerDiam,
-                coneLowerDiam
-            );
-        }
+    
         
     //Inside of Threads
     threadHeight = 16;
@@ -114,4 +99,19 @@ thread_in(10,16,thr=30);
             center = false
         );
     }
+    
+    translate(
+        [
+            0,
+            0,
+            coneZPos-cylHeight
+        ]
+        )
+        {
+            cylinder(
+                cylHeight+0.5,
+                coneLowerDiam,
+                coneLowerDiam
+            );
+        }
 }
