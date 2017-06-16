@@ -12,6 +12,7 @@ difference()
         $fs = $fs
     );
 
+    //Chop off half the cylinder
     translate(
         [
             -radius,
@@ -30,6 +31,7 @@ difference()
         );
     }
     
+    //Slit
     width = 1.5;
     translate(
         [
