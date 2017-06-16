@@ -3,6 +3,8 @@ radius = 15/2;
 height = 25;
 use <ISOThread.scad>;
 
+difference()
+{
 union()
 {
 difference()
@@ -15,24 +17,7 @@ difference()
         $fs = $fs
     );
 
-    //Chop off half the cylinder
-    translate(
-        [
-            -radius,
-            0,
-            -1
-        ]
-        )
-    {
-        cube(
-            [
-                radius*2,
-                radius*2,
-                height+2
-            ],
-            center = false
-        );
-    }
+
     
     //Slit
     width = 1.5;
@@ -108,4 +93,25 @@ difference()
         }
 }
 thread_in(10,16,thr=30);
+}
+
+
+    //Chop off half the cylinder
+    translate(
+        [
+            -radius,
+            0,
+            -1
+        ]
+        )
+    {
+        cube(
+            [
+                radius*2,
+                radius*2,
+                height+2
+            ],
+            center = false
+        );
+    }
 }
