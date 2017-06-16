@@ -51,4 +51,21 @@ difference()
             center = false
         );
     }
+    
+    //Inner cone
+    coneHeight = 11;
+    translate(
+        [
+            0,
+            0,
+            height-coneHeight-1
+        ]
+        )
+        {
+            cylinder(
+                coneHeight,
+                12/2,
+                2.5
+            );
+        }
 }
