@@ -53,19 +53,37 @@ difference()
     }
     
     //Inner cone
-    coneHeight = 11;
+    coneHeight = 6;
+    coneLowerDiam = 12/2;
+    coneZPos = height-coneHeight-1;
     translate(
         [
             0,
             0,
-            height-coneHeight-1
+            coneZPos
         ]
         )
         {
             cylinder(
                 coneHeight,
-                12/2,
+                coneLowerDiam,
                 2.5
+            );
+        }
+        
+    cylHeight = 4;
+    translate(
+        [
+            0,
+            0,
+            coneZPos-cylHeight
+        ]
+        )
+        {
+            cylinder(
+                cylHeight+0.5,
+                coneLowerDiam,
+                coneLowerDiam
             );
         }
 }
