@@ -29,4 +29,23 @@ difference()
             center = false
         );
     }
+    
+    width = 1.5;
+    translate(
+        [
+            -width/2,
+            -radius,
+            -1
+        ]
+        )
+    {
+        cube(
+            [
+                width,
+                radius+1,
+                radius+2
+            ],
+            center = false
+        );
+    }
 }
