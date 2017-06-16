@@ -10,7 +10,8 @@ use <ISOThread.scad>;
 module mainBody () 
 {
     //Main structural body
-    cylinder(
+    cylinder
+    (
         height,
         radius,
         radius,
@@ -24,15 +25,17 @@ module slit ()
     //Chop out the slit
     width = 1.5;
     slitHeight = 12;
-    translate(
+    translate
+    (
         [
             -width/2,
             -radius,
             height-slitHeight+1
         ]
-        )
+    )
     {
-        cube(
+        cube
+        (
             [
                 width,
                 radius+1,
@@ -46,54 +49,60 @@ module slit ()
 module core ()
 {
     //Chop out the inner cone
-    translate(
+    translate
+    (
         [
             0,
             0,
             coneZPos
         ]
-        )
-        {
-            cylinder(
-                coneHeight,
-                coneLowerDiam,
-                2.5
-            );
-        }
+    )
+    {
+        cylinder
+        (
+            coneHeight,
+            coneLowerDiam,
+            2.5
+        );
+    }
 }
 
 module threadZone ()
 {
     //Add space for the threads
     threadHeight = 16;
-    translate(
+    translate
+    (
         [
             0,
             0,
             -1
         ]
-        )
-        {
-            cylinder(
-                threadHeight,
-                5,
-                5
-            );
-        }
+    )
+    {
+        cylinder
+        (
+            threadHeight,
+            5,
+            5
+        );
+    }
 }
 
 module chopOffHalf ()
 {
     //Chop off half the cylinder
-    translate(
+    translate
+    (
         [
             -radius,
             0,
             -1
         ]
-        )
+    )
     {
-        cube(
+        cube
+        (
             [
                 radius*2,
                 radius*2,
@@ -107,35 +116,37 @@ module chopOffHalf ()
 module innerCavity()
 {
     //Chop out inner cavity
-    translate(
+    translate
+    (
         [
             0,
             0,
             coneZPos-cylHeight
         ]
-        )
-        {
-            cylinder(
-                cylHeight+0.5,
-                coneLowerDiam,
-                coneLowerDiam
-            );
-        }
+    )
+    {
+        cylinder
+        (
+            cylHeight+0.5,
+            coneLowerDiam,
+            coneLowerDiam
+        );
+    }
 }
 
 difference()
 {
-union()
-{
-difference()
-{
-    mainBody ();
-    slit ();
-    core ();
-    threadZone();
-}
-thread_in(10,16,thr=30);
-}
+    union()
+    {
+        difference()
+        {
+            mainBody();
+            slit();
+            core();
+            threadZone();
+        }
+        thread_in(10,16,thr=30);
+    }
     chopOffHalf();
     innerCavity();
 }
