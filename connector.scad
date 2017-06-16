@@ -1,7 +1,10 @@
 $fs = .25;
 radius = 15/2;
 height = 25;
+use <ISOThread.scad>;
 
+union()
+{
 difference()
 {
     cylinder(
@@ -103,4 +106,6 @@ difference()
                 5
             );
         }
+}
+thread_in(10,16,thr=30);
 }
