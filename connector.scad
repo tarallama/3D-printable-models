@@ -86,4 +86,21 @@ difference()
                 coneLowerDiam
             );
         }
+        
+    //Inside of Threads
+    threadHeight = 16;
+    translate(
+        [
+            0,
+            0,
+            -1
+        ]
+        )
+        {
+            cylinder(
+                threadHeight,
+                5,
+                5
+            );
+        }
 }
