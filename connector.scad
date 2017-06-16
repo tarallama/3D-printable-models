@@ -33,12 +33,12 @@ difference()
     
     //Slit
     width = 1.5;
-    slitHeight = radius+1;
+    slitHeight = 12;
     translate(
         [
             -width/2,
             -radius,
-            height-slitHeight
+            height-slitHeight+1
         ]
         )
     {
@@ -46,7 +46,7 @@ difference()
             [
                 width,
                 radius+1,
-                radius+2
+                slitHeight
             ],
             center = false
         );
