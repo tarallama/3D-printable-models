@@ -1,6 +1,9 @@
 $fs = .25;
 radius = 15/2;
 height = 25;
+coneHeight = 6;
+coneLowerDiam = 12/2;
+coneZPos = height-coneHeight-1;
 use <ISOThread.scad>;
 
 difference()
@@ -41,9 +44,6 @@ difference()
     }
     
     //Inner cone
-    coneHeight = 6;
-    coneLowerDiam = 12/2;
-    coneZPos = height-coneHeight-1;
     translate(
         [
             0,
