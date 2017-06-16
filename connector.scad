@@ -130,18 +130,12 @@ union()
 difference()
 {
     mainBody ();
-    
     slit ();
-    
     core ();
-    
     threadZone();
-
 }
 thread_in(10,16,thr=30);
 }
-
     chopOffHalf();
-    
     innerCavity();
 }
