@@ -7,11 +7,7 @@ coneZPos = height-coneHeight-1;
 cylHeight = 4;
 use <ISOThread.scad>;
 
-difference()
-{
-union()
-{
-difference()
+module mainBody () 
 {
     //Main structural body
     cylinder(
@@ -20,8 +16,11 @@ difference()
         radius,
         center = false,
         $fs = $fs
-    );
-    
+    );    
+}
+
+module slit ()
+{
     //Chop out the slit
     width = 1.5;
     slitHeight = 12;
@@ -42,7 +41,10 @@ difference()
             center = false
         );
     }
-    
+}
+
+module core ()
+{
     //Chop out the inner cone
     translate(
         [
@@ -58,7 +60,10 @@ difference()
                 2.5
             );
         }
-        
+}
+
+module threadZone ()
+{
     //Add space for the threads
     threadHeight = 16;
     translate(
@@ -76,9 +81,9 @@ difference()
             );
         }
 }
-thread_in(10,16,thr=30);
-}
 
+module chopOffHalf ()
+{
     //Chop off half the cylinder
     translate(
         [
@@ -97,7 +102,10 @@ thread_in(10,16,thr=30);
             center = false
         );
     }
-    
+}
+
+module innerCavity()
+{
     //Chop out inner cavity
     translate(
         [
@@ -113,4 +121,27 @@ thread_in(10,16,thr=30);
                 coneLowerDiam
             );
         }
+}
+
+difference()
+{
+union()
+{
+difference()
+{
+    mainBody ();
+    
+    slit ();
+    
+    core ();
+    
+    threadZone();
+
+}
+thread_in(10,16,thr=30);
+}
+
+    chopOffHalf();
+    
+    innerCavity();
 }
