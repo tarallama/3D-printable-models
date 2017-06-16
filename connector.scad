@@ -136,16 +136,38 @@ module innerCavity()
 
 module threads()
 {
-    translate
-    (
-        [
-            0,
-            0,
-            -0.5
-        ]
-    )
+    difference()
     {
-        thread_in(10,16,thr=30);
+        translate
+        (
+            [
+                0,
+                0,
+                -0.5
+            ]
+        )
+        {
+            thread_in(10,16,thr=30);
+        }
+        
+        translate
+        (
+            [
+                0,
+                0,
+                -1
+            ]
+        )
+        {
+            cylinder
+            (
+                1,
+                radius+1,
+                radius+1,
+                center = false,
+                $fs = $fs
+            );
+        }  
     }
 }
 
