@@ -22,7 +22,6 @@ module mainBody ()
 
 module slit ()
 {
-    //Chop out the slit
     width = 1.5;
     slitHeight = 12;
     translate
@@ -39,6 +38,26 @@ module slit ()
             [
                 width,
                 radius+1,
+                slitHeight
+            ],
+            center = false
+        );
+    }
+
+    translate
+    (
+        [
+            -radius,
+            -1,
+            height-slitHeight+1
+        ]
+    )
+    {    
+        cube
+        (
+            [
+                (radius*2) + 1,
+                width,
                 slitHeight
             ],
             center = false
