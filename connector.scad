@@ -193,25 +193,26 @@ module threads()
 
 module main()
 {
-    difference()
+    rotate(a=[180,0,0])
     {
-        union()
+        difference()
         {
-            difference()
+            union()
             {
-                mainBody();
-                slit();
-                core();
-                threadZone();
+                difference()
+                {
+                    mainBody();
+                    slit();
+                    core();
+                    threadZone();
+                }
+                threads();
             }
-            threads();
+            chopOffHalf();
+            innerCavity();
         }
-        chopOffHalf();
-        innerCavity();
     }
 }
 
-rotate(a=[180,0,0])
-{
-    main();
-}
+
+main();
