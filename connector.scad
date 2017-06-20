@@ -166,6 +166,33 @@ module threads()
     }
 }
 
+
+module split()
+{
+    split_width = 1.5;
+    split_length = 4;
+    //leave a gap for assembley
+    translate
+    (
+        [
+            -split_width/2,
+            split_length,
+            -1
+        ]
+    )
+    {
+        cube
+        (
+            [
+                split_width,
+                split_length,
+                height+1
+            ],
+            center = false
+        );
+    }
+}
+
 module main()
 {
     rotate(a=[180,0,0])
@@ -184,6 +211,7 @@ module main()
                 threads();
             }
             innerCavity();
+            split();
         }
     }
 }
