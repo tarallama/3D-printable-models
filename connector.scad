@@ -193,6 +193,35 @@ module split()
     }
 }
 
+
+module single_rib(offset = 0)
+{
+    size = 1;
+    rotate_extrude(angle = 360, convexity = 2)
+    {
+        translate
+        (
+            [
+                radius - 0.5,
+                height - size - 1 - offset,
+                0
+            ]
+        )
+        {
+            square( size, center = false);
+        }
+    }
+}
+
+module ribs()
+{
+    single_rib();
+    single_rib(2);
+    single_rib(4);
+    single_rib(6);
+    single_rib(8);
+}
+
 module main()
 {
     rotate(a=[180,0,0])
@@ -212,6 +241,7 @@ module main()
             }
             innerCavity();
             split();
+            ribs();
         }
     }
 }
