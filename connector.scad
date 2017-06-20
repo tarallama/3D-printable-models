@@ -191,7 +191,7 @@ module threads()
 }
 
 
-rotate(a=[180,0,0])
+module main()
 {
     difference()
     {
@@ -209,4 +209,9 @@ rotate(a=[180,0,0])
         chopOffHalf();
         innerCavity();
     }
+}
+
+rotate(a=[180,0,0])
+{
+    main();
 }
