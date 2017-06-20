@@ -191,9 +191,9 @@ module threads()
 }
 
 
-module main()
+module main(rotation)
 {
-    rotate(a=[180,0,0])
+    rotate(a=rotation)
     {
         difference()
         {
@@ -214,5 +214,4 @@ module main()
     }
 }
 
-
-main();
+main([180,0,0]);
