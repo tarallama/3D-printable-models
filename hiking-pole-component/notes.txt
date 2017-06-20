@@ -1,0 +1,11 @@
+During transportation a component of one of my hiking poles was lost. The poles are no longer manufactured and replacement parts cannot be sourced. 3D Printing comes to the rescue!
+
+The part is an internal locking component which allows for extension/collapse of the pole. Design was reverse engineered from an original using calipers and OpenSCAD.
+
+Recommended settings for 3D Printing:
+* Orientation: Vertical with threads furthest away from the print surface
+* Layer height: <= 0.15mm 
+* Material:
+    * Must be slightly flexible
+    * Surface must not be too slippery
+    * I settled on a Nylon called Taulman Bridge
