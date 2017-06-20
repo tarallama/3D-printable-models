@@ -1,5 +1,5 @@
 $fs = .25;
-radius = 15/2;
+radius = 16/2;
 height = 25;
 coneHeight = 6;
 coneLowerDiam = 12/2;
