@@ -190,15 +190,8 @@ module threads()
     }
 }
 
-
-module main(flipped)
+module structure(rotation)
 {
-    rotation = [180,0,0];
-    if (flipped == true)
-    {
-        rotation = [180,0,180];
-    }
-
     rotate(a=rotation)
     {
         difference()
@@ -217,6 +210,18 @@ module main(flipped)
             chopOffHalf();
             innerCavity();
         }
+    }
+}
+
+module main(flipped)
+{
+    if (flipped == true)
+    {
+        structure([180,0,180]);
+    }
+    else
+    {
+        structure([180,0,0]);
     }
 }
 
