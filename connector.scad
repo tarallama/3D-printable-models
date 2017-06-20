@@ -175,8 +175,8 @@ module split()
     translate
     (
         [
+            -radius,
             -split_width/2,
-            split_length,
             -1
         ]
     )
@@ -184,8 +184,8 @@ module split()
         cube
         (
             [
-                split_width,
                 split_length,
+                split_width,
                 height+1
             ],
             center = false
