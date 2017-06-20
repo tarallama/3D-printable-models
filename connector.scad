@@ -215,3 +215,4 @@ module main(rotation)
 }
 
 main([180,0,0]);
+main([180,0,180]);
