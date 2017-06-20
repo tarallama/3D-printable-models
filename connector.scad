@@ -191,8 +191,14 @@ module threads()
 }
 
 
-module main(rotation)
+module main(flipped)
 {
+    rotation = [180,0,0];
+    if (flipped == true)
+    {
+        rotation = [180,0,180];
+    }
+
     rotate(a=rotation)
     {
         difference()
@@ -214,5 +220,5 @@ module main(rotation)
     }
 }
 
-main([180,0,0]);
-main([180,0,180]);
+main(true);
+main(false);
