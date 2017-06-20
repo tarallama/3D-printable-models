@@ -37,7 +37,7 @@ module slit ()
         (
             [
                 width,
-                radius+1,
+                (radius*2)+1,
                 slitHeight
             ],
             center = false
