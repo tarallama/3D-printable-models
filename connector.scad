@@ -108,30 +108,6 @@ module threadZone ()
     }
 }
 
-module chopOffHalf ()
-{
-    //Chop off half the cylinder
-    translate
-    (
-        [
-            -radius,
-            0,
-            -1
-        ]
-    )
-    {
-        cube
-        (
-            [
-                radius*2,
-                radius*2,
-                height+2
-            ],
-            center = false
-        );
-    }
-}
-
 module innerCavity()
 {
     //Chop out inner cavity
@@ -190,9 +166,9 @@ module threads()
     }
 }
 
-module structure(rotation)
+module main()
 {
-    rotate(a=rotation)
+    rotate(a=[180,0,0])
     {
         difference()
         {
@@ -207,23 +183,9 @@ module structure(rotation)
                 }
                 threads();
             }
-            chopOffHalf();
             innerCavity();
         }
     }
 }
 
-module main(flipped)
-{
-    if (flipped == true)
-    {
-        structure([180,0,180]);
-    }
-    else
-    {
-        structure([180,0,0]);
-    }
-}
-
-main(true);
-main(false);
+main();
