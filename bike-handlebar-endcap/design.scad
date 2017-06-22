@@ -1,18 +1,57 @@
 $fs = .1;
 radius = 32/2;
-height = 4;
+height = 3;
 
 module mainBody()
 {
     //Main structural body
-    cylinder
+    hull()
+    {
+        cylinder
+        (
+            height,
+            radius,
+            radius,
+            center = false,
+            $fs = $fs
+        );
+
+        corner();
+    }
+}
+
+module corner()
+{
+    //Round off the edge
+    cornerRadius = 1;
+    translate
     (
-        height,
-        radius,
-        radius,
-        center = false,
-        $fs = $fs
-    );
+        [
+            0,
+            0,
+            height
+        ]
+    )
+    {
+        rotate_extrude(convexity = 10)
+        {
+            translate
+            (
+                [
+                    radius-cornerRadius,
+                    0,
+                    0
+                ]
+            )
+            {
+                circle
+                (
+                    r = cornerRadius,
+                    center = false
+                );
+            }
+        }
+    }
 }
 
 module connector()
