@@ -1,6 +1,6 @@
 $fs = .1;
 radius = 32/2;
-height = 3;
+height = 1;
 
 module mainBody()
 {
@@ -23,7 +23,7 @@ module mainBody()
 module corner()
 {
     //Round off the edge
-    cornerRadius = 1;
+    cornerRadius = 3;
     translate
     (
         [
@@ -35,20 +35,40 @@ module corner()
     {
         rotate_extrude(convexity = 10)
         {
-            translate
-            (
-                [
-                    radius-cornerRadius,
-                    0,
-                    0
-                ]
-            )
+            difference()
             {
-                circle
+                translate
                 (
-                    r = cornerRadius,
-                    center = false
-                );
+                    [
+                        radius-cornerRadius,
+                        0,
+                        0
+                    ]
+                )
+                {
+                    circle
+                    (
+                        r = cornerRadius,
+                        center = false
+                    );
+                }
+
+                width = cornerRadius * 2;
+                translate
+                (
+                    [
+                        radius-width,
+                        -width,
+                        0
+                    ]
+                )
+                {
+                    square
+                    (
+                        size = width,
+                        center = false
+                    );
+                }
             }
         }
     }
