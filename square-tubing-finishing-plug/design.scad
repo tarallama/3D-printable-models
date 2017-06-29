@@ -1,19 +1,101 @@
+$fs = .25;
 width = 45;
 height = width;
 depth = 15;
 
-module mainBody() 
+module sidewalls()
 {
-    //Main structural body
-    cube
+    doubleSidewall();
+    translate
     (
         [
             width,
+            0,
+            0
+        ]
+    )
+    {
+        rotate
+        (
+            [
+                0,
+                0,
+                90
+            ]
+        )
+        {
+            doubleSidewall();
+        }
+    }
+}
+
+module doubleSidewall()
+{
+    sidewallMaxThickness = 2;
+    sidewallMinThickness = 1;
+    singleSidewall(sidewallMaxThickness, sidewallMinThickness);
+    translate
+    (
+        [
+            0,
             height,
-            depth
-        ],
-        center = false
-    );
+            0
+        ]
+    )
+    {
+        singleSidewall(sidewallMaxThickness, sidewallMinThickness);
+    }
+}
+
+module singleSidewall
+(
+    sidewallMaxThickness,
+    sidewallMinThickness
+)
+{
+    offset = sidewallMinThickness / sidewallMaxThickness;
+    hull()
+    {
+        //Left
+        translate
+        (
+            [
+                0,
+                0,
+                0
+            ]
+        )
+        {
+            cylinder
+            (
+                depth,
+                sidewallMinThickness / 2,
+                sidewallMaxThickness / 2,
+                center = false,
+                $fs = $fs
+            );
+        }
+
+        //Right
+        translate
+        (
+            [
+                width,
+                0,
+                0
+            ]
+        )
+        {
+            cylinder
+            (
+                depth,
+                sidewallMinThickness / 2,
+                sidewallMaxThickness / 2,
+                center = false,
+                $fs = $fs
+            );
+        }
+    }
 }
 
 module lip()
@@ -47,7 +129,8 @@ module lip()
 
 module main()
 {
-    mainBody();
+    //Main structural body
+    sidewalls();
     lip();
 }
 
