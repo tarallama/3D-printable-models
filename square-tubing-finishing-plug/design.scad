@@ -129,8 +129,18 @@ module roof()
 module main()
 {
     //Main structural body
-    sidewalls();
-    roof();
+    rotate
+    (
+        [
+            180,
+            0,
+            0
+        ]
+    )
+    {
+        sidewalls();
+        roof();
+    }
 }
 
 main();
