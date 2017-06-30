@@ -98,13 +98,13 @@ module singleSidewall
     }
 }
 
-module lip()
+module roof()
 {
-    lipWidth = 50;
-    lipHeight = lipWidth;
-    lipDepth = 3;
+    roofWidth = 50;
+    roofHeight = roofWidth;
+    roofDepth = 3;
 
-    offsetWidth = width/2 - lipWidth/2;
+    offsetWidth = width/2 - roofWidth/2;
     offsetHeight = offsetWidth;
     translate
     (
@@ -118,9 +118,9 @@ module lip()
         cube
         (
             [
-                lipWidth,
-                lipHeight,
-                lipDepth
+                roofWidth,
+                roofHeight,
+                roofDepth
             ],
             center = false
         );
@@ -131,7 +131,7 @@ module main()
 {
     //Main structural body
     sidewalls();
-    lip();
+    roof();
 }
 
 main();
