@@ -1,6 +1,4 @@
-During transportation a component of one of my hiking poles was lost. The poles are no longer manufactured and replacement parts cannot be sourced. 3D Printing comes to the rescue!
-
-The part is an internal locking component which allows for extension/collapse of the pole. Design was reverse engineered from an original using calipers and OpenSCAD.
+This part is an internal locking component which allows for extension/collapse of a hiking pole. During transportation this part was lost rendering the poles useless. I could not source a replacement part as this style of pole is no longer manufactured. 3D Printing comes to the rescue!
 
 Recommended settings for 3D Printing:
 * Orientation: Vertical with threads furthest away from the print surface
