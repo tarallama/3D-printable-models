@@ -53,7 +53,6 @@ module singleSidewall
     sidewallMinThickness
 )
 {
-    offset = sidewallMinThickness / sidewallMaxThickness;
     hull()
     {
         //Left
