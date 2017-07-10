@@ -2,6 +2,7 @@ $fs = .25;
 width = 45;
 height = width;
 depth = 15;
+cornerRadius = 4;
 
 module sidewalls()
 {
@@ -97,6 +98,67 @@ module singleSidewall
     }
 }
 
+module singleCorner
+(
+    x = 0,
+    y = 0,
+    z = 0
+)
+{
+    offset = 3;
+    translate
+    (
+        [
+            x + offset,
+            y + offset,
+            z
+        ]
+    )
+    {
+        cylinder
+        (
+            depth,
+            cornerRadius,
+            cornerRadius,
+            center = false,
+            $fs = $fs
+        );
+    }
+}
+
+
+module roundedCorners()
+{
+    cornerDiameter = cornerRadius * 2;
+    singleCorner
+    (
+        0,
+        0,
+        0
+    );
+    
+    singleCorner
+    (
+        0,
+        height - cornerDiameter,
+        0
+    );
+    
+    /*singleCorner
+    (
+        width - cornerDiameter,
+        0,
+        0
+    );
+    
+    singleCorner
+    (
+        width - cornerDiameter,
+        height - cornerDiameter,
+        0
+    );*/
+}
+
 module roof()
 {
     roofWidth = 50;
@@ -138,9 +200,16 @@ module main()
         ]
     )
     {
-        sidewalls();
+        %roundedCorners();
+        //sidewalls();
         roof();
     }
 }
 
 main();
+
+use <teamteamusa-ruler.scad>;
+translate([+2,-47.5,-15])
+{
+ruler(50);
+}
