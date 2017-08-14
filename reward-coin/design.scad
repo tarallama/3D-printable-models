@@ -1,6 +1,6 @@
 $fs = .1;
 radius = 25;
-height = 10;
+height = 7;
 
 module coin(rimHeight)
 {
