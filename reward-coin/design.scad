@@ -22,7 +22,7 @@ module coin()
             [
                 0,
                 0,
-                -1
+                height - rimHeight
             ]
         )
         {
