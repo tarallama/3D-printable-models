@@ -5,7 +5,7 @@ height = 10;
 module coin()
 {
     rimHeight = 1;
-    offset = 2;
+    rimThickness = 2;
     difference()
     {
         cylinder
@@ -29,8 +29,8 @@ module coin()
             cylinder
             (
                 rimHeight + 1,
-                radius - offset,
-                radius - offset,
+                radius - rimThickness,
+                radius - rimThickness,
                 center = false,
                 $fs = $fs
             );
