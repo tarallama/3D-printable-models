@@ -2,9 +2,8 @@ $fs = .1;
 radius = 25;
 height = 10;
 
-module coin()
+module coin(rimHeight)
 {
-    rimHeight = 1;
     rimThickness = 2;
     difference()
     {
@@ -38,11 +37,36 @@ module coin()
     }
 }
 
+module 3dtext(string, rimHeight)
+{
+    translate
+    (
+        [
+            0,
+            0,
+            height - rimHeight
+        ]
+    )
+    {
+        linear_extrude(rimHeight)
+        {
+            text(
+                string,
+                font="Liberation:style=Bold",
+                valign = "center",
+                halign = "center"
+            );
+        }
+    }
+}
+
 module main()
 {
     rotate(a=[0,0,0])
     {
-        coin();
+        rimHeight = 2;
+        coin(rimHeight);
+        3dtext("TEST", rimHeight);
     }
 }
 
