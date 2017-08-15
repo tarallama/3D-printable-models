@@ -6,7 +6,7 @@ wallThickness = 3;
 module positiveVolumes()
 {
    //Brim
-    brimExtraRadius = 3;
+    brimExtraRadius = 10;
     cylinder
     (
         wallThickness,
