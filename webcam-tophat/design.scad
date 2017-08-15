@@ -3,9 +3,9 @@ radius = 45/2;
 height = 60;
 wallThickness = 3;
 
-module hat()
+module positiveVolumes()
 {
-    //Brim
+   //Brim
     brimExtraRadius = 3;
     cylinder
     (
@@ -16,17 +16,22 @@ module hat()
         $fs = $fs
     );
 
+    //Main body of hat
+    cylinder
+    (
+        height,
+        radius,
+        radius,
+        center = false,
+        $fs = $fs
+    );
+}
+
+module hat()
+{
     difference()
     {
-        //Main body of hat
-        cylinder
-        (
-            height,
-            radius,
-            radius,
-            center = false,
-            $fs = $fs
-        );
+        positiveVolumes();
 
         //remove interior of hat
         translate
