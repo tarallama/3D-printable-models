@@ -1,12 +1,12 @@
 $fs = .1;
-radius = 45/2;
+radius = 43/2;
 height = 60;
 wallThickness = 3;
 
 module positiveVolumes()
 {
    //Brim
-    brimExtraRadius = 10;
+    brimExtraRadius = 14;
     cylinder
     (
         wallThickness,
