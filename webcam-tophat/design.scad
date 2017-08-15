@@ -18,6 +18,7 @@ module hat()
 
     difference()
     {
+        //Main body of hat
         cylinder
         (
             height,
