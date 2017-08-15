@@ -1,17 +1,41 @@
 $fs = .1;
 radius = 45/2;
 height = 60;
+wallThickness = 3;
 
 module hat()
 {
-    cylinder
-    (
-        height,
-        radius,
-        radius,
-        center = false,
-        $fs = $fs
-    );
+    difference()
+    {
+        cylinder
+        (
+            height,
+            radius,
+            radius,
+            center = false,
+            $fs = $fs
+        );
+
+        //remove interior of hat
+        translate
+        (
+            [
+                0,
+                0,
+                -1
+            ]
+        )
+        {
+            cylinder
+            (
+                height - wallThickness + 1,
+                radius - wallThickness,
+                radius - wallThickness,
+                center = false,
+                $fs = $fs
+            );
+        }
+    }
 }
 
 module main()
