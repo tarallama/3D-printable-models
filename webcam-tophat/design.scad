@@ -5,6 +5,17 @@ wallThickness = 3;
 
 module hat()
 {
+    //Brim
+    brimExtraRadius = 3;
+    cylinder
+    (
+        wallThickness,
+        radius + brimExtraRadius,
+        radius + brimExtraRadius,
+        center = false,
+        $fs = $fs
+    );
+
     difference()
     {
         cylinder
