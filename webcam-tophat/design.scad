@@ -10,8 +10,8 @@ module positiveVolumes()
     cylinder
     (
         wallThickness,
-        radius + brimExtraRadius,
-        radius + brimExtraRadius,
+        radius + brimExtraRadius + wallThickness,
+        radius + brimExtraRadius + wallThickness,
         center = false,
         $fs = $fs
     );
@@ -20,8 +20,8 @@ module positiveVolumes()
     cylinder
     (
         height,
-        radius,
-        radius,
+        radius + wallThickness,
+        radius + wallThickness,
         center = false,
         $fs = $fs
     );
@@ -46,8 +46,8 @@ module hat()
             cylinder
             (
                 height - wallThickness + 1,
-                radius - wallThickness,
-                radius - wallThickness,
+                radius,
+                radius,
                 center = false,
                 $fs = $fs
             );
