@@ -2,11 +2,11 @@ $fn = 100;
 radius = 43/2;
 height = 60;
 wallThickness = 3;
+brimExtraRadius = 14;
 
 module positiveVolumes()
 {
    //Brim
-    brimExtraRadius = 14;
     cylinder
     (
         wallThickness,
