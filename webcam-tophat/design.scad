@@ -1,4 +1,4 @@
-$fs = .1;
+$fn = 100;
 radius = 43/2;
 height = 60;
 wallThickness = 3;
@@ -12,8 +12,7 @@ module positiveVolumes()
         wallThickness,
         radius + brimExtraRadius + wallThickness,
         radius + brimExtraRadius + wallThickness,
-        center = false,
-        $fs = $fs
+        center = false
     );
 
     //Main body of hat
@@ -22,8 +21,7 @@ module positiveVolumes()
         height,
         radius + wallThickness,
         radius + wallThickness,
-        center = false,
-        $fs = $fs
+        center = false
     );
 }
 
@@ -48,8 +46,7 @@ module hat()
                 height - wallThickness + 1,
                 radius,
                 radius,
-                center = false,
-                $fs = $fs
+                center = false
             );
         }
     }
