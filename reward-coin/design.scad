@@ -2,19 +2,24 @@ $fn = 100;
 radius = 25;
 height = 7;
 
+module structure()
+{
+    cylinder
+    (
+        height,
+        radius,
+        radius,
+        center = false
+    );
+}
+
 module coin(rimHeight)
 {
     rimThickness = 2;
     difference()
     {
-        cylinder
-        (
-            height,
-            radius,
-            radius,
-            center = false
-        );
-
+        structure();
+ 
         translate
         (
             [
