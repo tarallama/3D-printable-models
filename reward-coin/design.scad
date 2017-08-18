@@ -84,21 +84,21 @@ module 3dtext(string, extraHeight = 0)
     }
 }
 
-module coin(positiveText)
+module coin(message = "TEST", positiveText = true)
 {
     structure();
 
     if(positiveText)
     {
         rim(true);
-        3dtext("TEST");
+        3dtext(message);
     }
     else
     {
         difference()
         {
             rim(false);
-            3dtext("TEST", extraHeight = 1);
+            3dtext(message, extraHeight = 1);
         }
     }
 }
