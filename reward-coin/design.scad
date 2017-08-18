@@ -1,5 +1,5 @@
 $fn = 100;
-radius = 25;
+radius = 30;
 structureHeight = 5;
 detailHeight = 2;
 rimThickness = 2;
@@ -124,7 +124,7 @@ rotate(a=[0,0,0])
 {
     coin
     (
-        message = "HEY",
+        message = "LEMON",
         positiveText = true
     );
 }
@@ -140,7 +140,7 @@ translate
 {
     coin
     (
-        message = "TEST",
+        message = "LIME",
         positiveText = false
     );
 }
