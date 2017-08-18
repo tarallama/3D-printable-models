@@ -1,4 +1,4 @@
-$fs = .1;
+$fn = 100;
 radius = 25;
 height = 7;
 
@@ -12,8 +12,7 @@ module coin(rimHeight)
             height,
             radius,
             radius,
-            center = false,
-            $fs = $fs
+            center = false
         );
 
         translate
@@ -30,8 +29,7 @@ module coin(rimHeight)
                 rimHeight + 1,
                 radius - rimThickness,
                 radius - rimThickness,
-                center = false,
-                $fs = $fs
+                center = false
             );
         }
     }
