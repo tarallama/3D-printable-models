@@ -57,13 +57,6 @@ module rim();
     }
 }
 
-module coin()
-{
-    structure();
-    rim();
-    3dtext("TEST");
-}
-
 module 3dtext(string)
 {
     translate
@@ -85,6 +78,13 @@ module 3dtext(string)
             );
         }
     }
+}
+
+module coin()
+{
+    structure();
+    rim();
+    3dtext("TEST");
 }
 
 rotate(a=[0,0,0])
