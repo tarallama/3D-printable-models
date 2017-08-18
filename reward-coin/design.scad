@@ -34,7 +34,8 @@ module bothSurfaceDetails
     (
         ZPosition  =  - detailHeight,
         positiveText = positiveText,
-        message = message
+        message = message,
+        angle = 180
     );
 }
 
@@ -83,7 +84,8 @@ module singleSurfaceDetail
 (
     ZPosition,
     positiveText,
-    message
+    message,
+    angle
 )
 {
     position = 
@@ -102,7 +104,8 @@ module singleSurfaceDetail
         3dtext
         (
             position,
-            message
+            message,
+            angle
         );
     }
     else
@@ -117,7 +120,8 @@ module singleSurfaceDetail
             3dtext
             (
                 position,
-                message
+                message,
+                angle
             );
         }
     }
@@ -126,23 +130,27 @@ module singleSurfaceDetail
 module 3dtext
 (
     position,
-    string
+    string,
+    angle = 0
 )
 {
-    translate
-    (
-        position
-    )
+    rotate(angle, v=[0,0,1])
     {
-        linear_extrude(detailHeight)
+        translate
+        (
+            position
+        )
         {
-            text
-            (
-                string,
-                font="Liberation:style=Bold",
-                valign = "center",
-                halign = "center"
-            );
+            linear_extrude(detailHeight)
+            {
+                text
+                (
+                    string,
+                    font="Liberation:style=Bold",
+                    valign = "center",
+                    halign = "center"
+                );
+            }
         }
     }
 }
