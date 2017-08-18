@@ -14,7 +14,7 @@ module structure()
     );
 }
 
-module coin(detailHeight)
+module coin()
 {
     rimThickness = 2;
     difference()
@@ -41,7 +41,7 @@ module coin(detailHeight)
     }
 }
 
-module 3dtext(string, detailHeight)
+module 3dtext(string)
 {
     translate
     (
@@ -68,8 +68,8 @@ module main()
 {
     rotate(a=[0,0,0])
     {
-        coin(detailHeight);
-        3dtext("TEST", detailHeight);
+        coin();
+        3dtext("TEST");
     }
 }
 
