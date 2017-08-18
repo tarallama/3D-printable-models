@@ -15,33 +15,35 @@ module structure()
     );
 }
 
-module surfaceDetail(removeInterior)
+module bothSurfaceDetails
+(
+    message,
+    positiveText
+)
 {
+    //Top
     singleSurfaceDetail
     (
         ZPosition  =  structureHeight,
-        removeInterior = removeInterior
+        positiveText = positiveText,
+        message = message
     );
 
+    //Bottom
     singleSurfaceDetail
     (
         ZPosition  =  - detailHeight,
-        removeInterior = removeInterior
+        positiveText = positiveText,
+        message = message
     );
 }
 
-module singleSurfaceDetail
+module rim
 (
-    topSurface = true,
-    removeInterior = false
+    position,
+    removeInterior
 )
 {
-    position = 
-    [
-        0,
-        0,
-        ZPosition
-    ];
     difference()
     {
         translate
@@ -77,18 +79,62 @@ module singleSurfaceDetail
     }
 }
 
-module 3dtext(string, extraHeight = 0)
+module singleSurfaceDetail
+(
+    ZPosition,
+    positiveText,
+    message
+)
+{
+    position = 
+    [
+        0,
+        0,
+        ZPosition
+    ];
+    if(positiveText)
+    {
+        rim
+        (
+            position,
+            removeInterior = true
+        );
+        3dtext
+        (
+            position,
+            message
+        );
+    }
+    else
+    {
+        difference()
+        {
+            rim
+            (
+                position,
+                removeInterior = false
+            );
+            3dtext
+            (
+                position,
+                message
+            );
+        }
+    }
+}
+
+module 3dtext
+(
+    position,
+    string
+)
 {
     translate
     (
-        [
-            0,
-            0,
-            structureHeight
-        ]
+        position
     )
     {
-        linear_extrude(detailHeight + extraHeight)
+        linear_extrude(detailHeight)
         {
             text
             (
@@ -104,20 +150,11 @@ module 3dtext(string, extraHeight = 0)
 module coin(message = "TEST", positiveText = true)
 {
     structure();
-
-    if(positiveText)
-    {
-        surfaceDetail(true);
-        3dtext(message);
-    }
-    else
-    {
-        difference()
-        {
-            surfaceDetail(false);
-            3dtext(message, extraHeight = 1);
-        }
-    }
+    bothSurfaceDetails
+    (
+        message = message,
+        positiveText = positiveText
+    );
 }
 
 rotate(a=[0,0,0])
