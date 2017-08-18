@@ -157,12 +157,22 @@ module 3dtext
 
 module coin(message = "TEST", positiveText = true)
 {
-    structure();
-    bothSurfaceDetails
+    translate
     (
-        message = message,
-        positiveText = positiveText
-    );
+        [
+            0,
+            0,
+            detailHeight
+        ]
+    )
+    {
+        structure();
+        bothSurfaceDetails
+        (
+            message = message,
+            positiveText = positiveText
+        );
+    }
 }
 
 module testBothStyles()
@@ -193,4 +203,8 @@ module testBothStyles()
     }
 }
 
-testBothStyles();
+coin
+(
+    message = "TEXT",
+    positiveText = false
+);
