@@ -16,16 +16,18 @@ module structure()
 
 module rim(removeInterior)
 {
+    position = 
+    [
+        0,
+        0,
+        structureHeight
+    ];
     rimThickness = 2;
     difference()
     {
         translate
         (
-            [
-                0,
-                0,
-                structureHeight
-            ]
+            position
         )
         {
             cylinder
@@ -41,11 +43,7 @@ module rim(removeInterior)
         {
             translate
             (
-                [
-                    0,
-                    0,
-                    structureHeight
-                ]
+                position
             )
             {
                 cylinder
