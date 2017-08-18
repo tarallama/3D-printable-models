@@ -1,19 +1,20 @@
 $fn = 100;
 radius = 25;
-height = 7;
+structureHeight = 7;
+detailHeight = 2;
 
 module structure()
 {
     cylinder
     (
-        height,
+        structureHeight,
         radius,
         radius,
         center = false
     );
 }
 
-module coin(rimHeight)
+module coin(detailHeight)
 {
     rimThickness = 2;
     difference()
@@ -25,13 +26,13 @@ module coin(rimHeight)
             [
                 0,
                 0,
-                height - rimHeight
+                structureHeight - detailHeight
             ]
         )
         {
             cylinder
             (
-                rimHeight + 1,
+                detailHeight + 1,
                 radius - rimThickness,
                 radius - rimThickness,
                 center = false
@@ -40,18 +41,18 @@ module coin(rimHeight)
     }
 }
 
-module 3dtext(string, rimHeight)
+module 3dtext(string, detailHeight)
 {
     translate
     (
         [
             0,
             0,
-            height - rimHeight
+            structureHeight - detailHeight
         ]
     )
     {
-        linear_extrude(rimHeight)
+        linear_extrude(detailHeight)
         {
             text(
                 string,
@@ -67,9 +68,8 @@ module main()
 {
     rotate(a=[0,0,0])
     {
-        rimHeight = 2;
-        coin(rimHeight);
-        3dtext("TEST", rimHeight);
+        coin(detailHeight);
+        3dtext("TEST", detailHeight);
     }
 }
 
