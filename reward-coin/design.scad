@@ -105,5 +105,25 @@ module coin(message = "TEST", positiveText = true)
 
 rotate(a=[0,0,0])
 {
-    coin(true);
+    coin
+    (
+        message = "HEY",
+        positiveText = true
+    );
+}
+
+translate
+(
+    [
+        radius * 2 + radius / 2,
+        0,
+        0
+    ]
+)
+{
+    coin
+    (
+        message = "TEST",
+        positiveText = false
+    );
 }
