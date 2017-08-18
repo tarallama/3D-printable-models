@@ -61,6 +61,7 @@ module coin()
 {
     structure();
     rim();
+    3dtext("TEST");
 }
 
 module 3dtext(string)
@@ -86,13 +87,7 @@ module 3dtext(string)
     }
 }
 
-module main()
+rotate(a=[0,0,0])
 {
-    rotate(a=[0,0,0])
-    {
-        coin();
-        3dtext("TEST");
-    }
+    coin();
 }
-
-main();
