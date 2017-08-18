@@ -2,6 +2,7 @@ $fn = 100;
 radius = 25;
 structureHeight = 5;
 detailHeight = 2;
+rimThickness = 2;
 
 module structure()
 {
@@ -14,22 +15,22 @@ module structure()
     );
 }
 
-module rims(removeInterior)
+module surfaceDetail(removeInterior)
 {
-    singleRim
+    singleSurfaceDetail
     (
         ZPosition  =  structureHeight,
         removeInterior = removeInterior
     );
 
-    singleRim
+    singleSurfaceDetail
     (
         ZPosition  =  - detailHeight,
         removeInterior = removeInterior
     );
 }
 
-module singleRim
+module singleSurfaceDetail
 (
     topSurface = true,
     removeInterior = false
@@ -41,7 +42,6 @@ module singleRim
         0,
         ZPosition
     ];
-    rimThickness = 2;
     difference()
     {
         translate
@@ -107,14 +107,14 @@ module coin(message = "TEST", positiveText = true)
 
     if(positiveText)
     {
-        rims(true);
+        surfaceDetail(true);
         3dtext(message);
     }
     else
     {
         difference()
         {
-            rims(false);
+            surfaceDetail(false);
             3dtext(message, extraHeight = 1);
         }
     }
