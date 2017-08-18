@@ -14,9 +14,27 @@ module structure()
     );
 }
 
-module rim(removeInterior)
+module rims(removeInterior)
 {
-    ZPosition  =  structureHeight;
+    singleRim
+    (
+        ZPosition  =  structureHeight,
+        removeInterior = removeInterior
+    );
+
+    singleRim
+    (
+        ZPosition  =  - detailHeight,
+        removeInterior = removeInterior
+    );
+}
+
+module singleRim
+(
+    topSurface = true,
+    removeInterior = false
+)
+{
     position = 
     [
         0,
@@ -89,14 +107,14 @@ module coin(message = "TEST", positiveText = true)
 
     if(positiveText)
     {
-        rim(true);
+        rims(true);
         3dtext(message);
     }
     else
     {
         difference()
         {
-            rim(false);
+            rims(false);
             3dtext(message, extraHeight = 1);
         }
     }
