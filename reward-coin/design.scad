@@ -16,11 +16,12 @@ module structure()
 
 module rim(removeInterior)
 {
+    ZPosition  =  structureHeight;
     position = 
     [
         0,
         0,
-        structureHeight
+        ZPosition
     ];
     rimThickness = 2;
     difference()
