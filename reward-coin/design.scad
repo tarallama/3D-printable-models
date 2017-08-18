@@ -1,6 +1,6 @@
 $fn = 100;
 radius = 25;
-structureHeight = 7;
+structureHeight = 5;
 detailHeight = 2;
 
 module structure()
@@ -16,17 +16,35 @@ module structure()
 
 module coin()
 {
+    structure();
+
     rimThickness = 2;
     difference()
     {
-        structure();
- 
         translate
         (
             [
                 0,
                 0,
-                structureHeight - detailHeight
+                structureHeight
+            ]
+        )
+        {
+            cylinder
+            (
+                detailHeight,
+                radius,
+                radius,
+                center = false
+            );
+        }
+
+        translate
+        (
+            [
+                0,
+                0,
+                structureHeight
             ]
         )
         {
@@ -48,7 +66,7 @@ module 3dtext(string)
         [
             0,
             0,
-            structureHeight - detailHeight
+            structureHeight
         ]
     )
     {
