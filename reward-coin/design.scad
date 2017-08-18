@@ -14,10 +14,8 @@ module structure()
     );
 }
 
-module coin()
+module rim();
 {
-    structure();
-
     rimThickness = 2;
     difference()
     {
@@ -57,6 +55,12 @@ module coin()
             );
         }
     }
+}
+
+module coin()
+{
+    structure();
+    rim();
 }
 
 module 3dtext(string)
