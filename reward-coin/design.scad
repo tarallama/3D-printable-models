@@ -14,7 +14,7 @@ module structure()
     );
 }
 
-module rim();
+module rim(removeInterior)
 {
     rimThickness = 2;
     difference()
@@ -37,27 +37,30 @@ module rim();
             );
         }
 
-        translate
-        (
-            [
-                0,
-                0,
-                structureHeight
-            ]
-        )
+        if(removeInterior)
         {
-            cylinder
+            translate
             (
-                detailHeight + 1,
-                radius - rimThickness,
-                radius - rimThickness,
-                center = false
-            );
+                [
+                    0,
+                    0,
+                    structureHeight
+                ]
+            )
+            {
+                cylinder
+                (
+                    detailHeight + 1,
+                    radius - rimThickness,
+                    radius - rimThickness,
+                    center = false
+                );
+            }
         }
     }
 }
 
-module 3dtext(string)
+module 3dtext(string, extraHeight = 0)
 {
     translate
     (
@@ -68,9 +71,10 @@ module 3dtext(string)
         ]
     )
     {
-        linear_extrude(detailHeight)
+        linear_extrude(detailHeight + extraHeight)
         {
-            text(
+            text
+            (
                 string,
                 font="Liberation:style=Bold",
                 valign = "center",
@@ -80,14 +84,26 @@ module 3dtext(string)
     }
 }
 
-module coin()
+module coin(positiveText)
 {
     structure();
-    rim();
-    3dtext("TEST");
+
+    if(positiveText)
+    {
+        rim(true);
+        3dtext("TEST");
+    }
+    else
+    {
+        difference()
+        {
+            rim(false);
+            3dtext("TEST", extraHeight = 1);
+        }
+    }
 }
 
 rotate(a=[0,0,0])
 {
-    coin();
+    coin(true);
 }
