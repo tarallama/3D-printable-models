@@ -165,27 +165,32 @@ module coin(message = "TEST", positiveText = true)
     );
 }
 
-rotate(a=[0,0,0])
+module testBothStyles()
 {
-    coin
+    rotate(a=[0,0,0])
+    {
+        coin
+        (
+            message = "LEMON",
+            positiveText = true
+        );
+    }
+
+    translate
     (
-        message = "LEMON",
-        positiveText = true
-    );
+        [
+            radius * 2 + radius / 2,
+            0,
+            0
+        ]
+    )
+    {
+        coin
+        (
+            message = "LIME",
+            positiveText = false
+        );
+    }
 }
 
-translate
-(
-    [
-        radius * 2 + radius / 2,
-        0,
-        0
-    ]
-)
-{
-    coin
-    (
-        message = "LIME",
-        positiveText = false
-    );
-}
+testBothStyles();
