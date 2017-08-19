@@ -35,7 +35,7 @@ module bothSurfaceDetails
         ZPosition  =  - detailHeight,
         positiveText = positiveText,
         message = message,
-        angle = 180
+        flipped = true
     );
 }
 
@@ -80,12 +80,37 @@ module rim
     }
 }
 
+module textFlipper
+(
+    position,
+    string,
+    needsFlipping = false
+)
+{
+    if(needsFlipping)
+    {
+        flipped3dtext
+        (
+            position = position,
+            string = string
+        );
+    }
+    else
+    {
+        3dtext
+        (
+            position = position,
+            string = string
+        );
+    }
+}
+
 module singleSurfaceDetail
 (
     ZPosition,
     positiveText,
     message,
-    angle
+    flipped = false
 )
 {
     position = 
@@ -101,11 +126,11 @@ module singleSurfaceDetail
             position,
             removeInterior = true
         );
-        3dtext
+        textFlipper
         (
             position,
             message,
-            angle
+            flipped
         );
     }
     else
@@ -117,12 +142,41 @@ module singleSurfaceDetail
                 position,
                 removeInterior = false
             );
-            3dtext
+            textFlipper
             (
                 position,
                 message,
-                angle
+                flipped
             );
+        }
+    }
+}
+
+module flipped3dtext
+(
+    position,
+    string
+)
+{
+    translate
+    (
+        [
+            0,
+            0,
+            detailHeight
+        ]
+    )
+    {
+        translate(position)
+        {
+            rotate([0,180,0])
+            {
+                3dtext
+                (
+                    postition = [0,0,0],
+                    string = string
+                );
+            }
         }
     }
 }
@@ -130,30 +184,27 @@ module singleSurfaceDetail
 module 3dtext
 (
     position,
-    string,
-    angle = 0
+    string
 )
 {
-    rotate(angle, v=[0,0,1])
+    translate
+    (
+        position
+    )
     {
-        translate
-        (
-            position
-        )
+        linear_extrude(detailHeight)
         {
-            linear_extrude(detailHeight)
-            {
-                text
-                (
-                    string,
-                    font="Liberation:style=Bold",
-                    valign = "center",
-                    halign = "center"
-                );
-            }
+            text
+            (
+                string,
+                font="Liberation:style=Bold",
+                valign = "center",
+                halign = "center"
+            );
+        }
         }
     }
-}
+
 
 module coin(message = "TEST", positiveText = true)
 {
@@ -203,8 +254,4 @@ module testBothStyles()
     }
 }
 
-coin
-(
-    message = "TEXT",
-    positiveText = false
-);
+testBothStyles();
