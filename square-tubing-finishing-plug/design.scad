@@ -94,7 +94,7 @@ module roof()
     roofHeight = roofWidth;
 
     offsetWidth = width/2 - roofWidth/2;
-    offsetHeight = offsetWidth;
+    offsetHeight = height/2 - roofHeight/2;
     translate
     (
         [
