@@ -9,7 +9,7 @@ cornerDiameter = cornerRadius * 2;
 sidewallWidth = width - cornerDiameter - 1.5;
 sidewallHeight = height - cornerDiameter - 1.5;
 widthOffset = (width - sidewallWidth) / 2;
-heightOffset = (height- sidewallHeight) / 2;
+heightOffset = (height - sidewallHeight) / 2;
 
 module roundedCorners
 (
@@ -118,7 +118,6 @@ module roof()
 
 module main()
 {
-    //Main structural body
     rotate
     (
         [
@@ -134,9 +133,3 @@ module main()
 }
 
 main();
-
-use <teamteamusa-ruler.scad>;
-translate([+2,-47.5,-15])
-{
-ruler(50);
-}
