@@ -106,7 +106,6 @@ module roundedCorners
 )
 {
     cornerDiameter = cornerRadius * 2;
-    sidewallDepth = 1;
     sidewallWidth = width - cornerDiameter - 1.5;
     sidewallHeight = height - cornerDiameter - 1.5;
     widthOffset = (width - sidewallWidth) / 2;
@@ -124,7 +123,7 @@ module roundedCorners
         {
             cylinder
             (
-                sidewallDepth,
+                1,
                 cornerRadius,
                 cornerRadius,
                 center = false
@@ -136,7 +135,7 @@ module roundedCorners
                 [
                     sidewallWidth,
                     sidewallHeight,
-                    sidewallDepth
+                    1
                 ],
                 center = false
             );
