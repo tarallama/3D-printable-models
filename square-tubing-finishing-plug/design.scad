@@ -3,6 +3,7 @@ width = 45;
 height = width;
 depth = 15;
 cornerRadius = 4;
+roofDepth = 3;
 
 module sidewalls()
 {
@@ -96,71 +97,52 @@ module singleSidewall
     }
 }
 
-module singleCorner
-(
-    x = 0,
-    y = 0,
-    z = 0
-)
-{
-    offset = 3;
-    translate
-    (
-        [
-            x + offset,
-            y + offset,
-            z
-        ]
-    )
-    {
-        cylinder
-        (
-            depth,
-            cornerRadius,
-            cornerRadius,
-            center = false
-        );
-    }
-}
-
 
 module roundedCorners()
 {
     cornerDiameter = cornerRadius * 2;
-    singleCorner
+    sidewallDepth = 1;
+    sidewallWidth = width - cornerDiameter - 1.5;
+    sidewallHeight = height - cornerDiameter - 1.5;
+    widthOffset = (width - sidewallWidth) / 2;
+    heightOffset = (height- sidewallHeight) / 2;
+    translate
     (
-        0,
-        0,
-        0
-    );
-    
-    singleCorner
-    (
-        0,
-        height - cornerDiameter,
-        0
-    );
-    
-    /*singleCorner
-    (
-        width - cornerDiameter,
-        0,
-        0
-    );
-    
-    singleCorner
-    (
-        width - cornerDiameter,
-        height - cornerDiameter,
-        0
-    );*/
+        [
+            widthOffset,
+            heightOffset,
+            depth - roofDepth + sidewallDepth
+        ]
+    )
+    {
+        minkowski()
+        {
+            cylinder
+            (
+                sidewallDepth,
+                cornerRadius,
+                cornerRadius,
+                center = false
+            );
+
+            cube
+            (
+                size =
+                [
+                    sidewallWidth,
+                    sidewallHeight,
+                    sidewallDepth
+                ],
+                center = false
+            );
+        }
+    }
 }
 
 module roof()
 {
     roofWidth = 50;
     roofHeight = roofWidth;
-    roofDepth = 3;
 
     offsetWidth = width/2 - roofWidth/2;
     offsetHeight = offsetWidth;
@@ -197,7 +179,7 @@ module main()
         ]
     )
     {
-        %roundedCorners();
+        roundedCorners();
         //sidewalls();
         roof();
     }
