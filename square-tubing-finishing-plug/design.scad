@@ -90,16 +90,13 @@ module sidewalls()
 
 module roof()
 {
-    roofWidth = 50;
-    roofHeight = roofWidth;
-
-    offsetWidth = width/2 - roofWidth/2;
-    offsetHeight = height/2 - roofHeight/2;
+    roofWidth = width + (widthOffset * 2);
+    roofHeight = height + (heightOffset * 2);
     translate
     (
         [
-            offsetWidth,
-            offsetHeight,
+            -widthOffset,
+            -heightOffset,
             depth
         ]
     )
