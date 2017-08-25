@@ -98,7 +98,12 @@ module singleSidewall
 }
 
 
-module roundedCorners()
+module roundedCorners
+(
+    x = 0,
+    y = 0,
+    z = 0
+)
 {
     cornerDiameter = cornerRadius * 2;
     sidewallDepth = 1;
@@ -109,9 +114,9 @@ module roundedCorners()
     translate
     (
         [
-            widthOffset,
-            heightOffset,
-            depth - roofDepth + sidewallDepth
+            x + widthOffset,
+            y + heightOffset,
+            z + 0
         ]
     )
     {
@@ -136,6 +141,20 @@ module roundedCorners()
                 center = false
             );
         }
+    }
+}
+
+module newSidewalls()
+{
+    hull()
+    {
+        roundedCorners();
+        roundedCorners
+        (
+            0,
+            0,
+            depth
+        );
     }
 }
 
@@ -179,7 +198,7 @@ module main()
         ]
     )
     {
-        roundedCorners();
+        newSidewalls();
         //sidewalls();
         roof();
     }
