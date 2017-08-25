@@ -1,4 +1,4 @@
-$fs = .25;
+$fn = 100;
 width = 45;
 height = width;
 depth = 15;
@@ -71,8 +71,7 @@ module singleSidewall
                 depth,
                 sidewallMinThickness / 2,
                 sidewallMaxThickness / 2,
-                center = false,
-                $fs = $fs
+                center = false
             );
         }
 
@@ -91,8 +90,7 @@ module singleSidewall
                 depth,
                 sidewallMinThickness / 2,
                 sidewallMaxThickness / 2,
-                center = false,
-                $fs = $fs
+                center = false
             );
         }
     }
@@ -120,8 +118,7 @@ module singleCorner
             depth,
             cornerRadius,
             cornerRadius,
-            center = false,
-            $fs = $fs
+            center = false
         );
     }
 }
