@@ -51,7 +51,7 @@ module roundedCorners
     }
 }
 
-module newSidewalls()
+module sidewalls()
 {
     difference()
     {
@@ -128,7 +128,7 @@ module main()
         ]
     )
     {
-        newSidewalls();
+        sidewalls();
         roof();
     }
 }
