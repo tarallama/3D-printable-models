@@ -4,6 +4,12 @@ height = width;
 depth = 15;
 cornerRadius = 4;
 roofDepth = 3;
+sidewallThickness = 1.5;
+cornerDiameter = cornerRadius * 2;
+sidewallWidth = width - cornerDiameter - 1.5;
+sidewallHeight = height - cornerDiameter - 1.5;
+widthOffset = (width - sidewallWidth) / 2;
+heightOffset = (height- sidewallHeight) / 2;
 
 module sidewalls()
 {
@@ -105,11 +111,6 @@ module roundedCorners
     z = 0
 )
 {
-    cornerDiameter = cornerRadius * 2;
-    sidewallWidth = width - cornerDiameter - 1.5;
-    sidewallHeight = height - cornerDiameter - 1.5;
-    widthOffset = (width - sidewallWidth) / 2;
-    heightOffset = (height- sidewallHeight) / 2;
     translate
     (
         [
@@ -145,15 +146,38 @@ module roundedCorners
 
 module newSidewalls()
 {
-    hull()
+    difference()
     {
-        roundedCorners();
-        roundedCorners
+        hull()
+        {
+            roundedCorners();
+            roundedCorners
+            (
+                0,
+                0,
+                depth
+            );
+        }
+
+        translate
         (
-            0,
-            0,
-            depth
-        );
+            [
+                widthOffset,
+                heightOffset,
+                -1
+            ]
+        )
+        {
+            cube
+            (
+                [
+                    sidewallWidth,
+                    sidewallHeight,
+                    depth + 1
+                ],
+                center = false
+            );
+        }
     }
 }
 
