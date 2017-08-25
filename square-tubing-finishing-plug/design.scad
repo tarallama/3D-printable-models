@@ -11,99 +11,6 @@ sidewallHeight = height - cornerDiameter - 1.5;
 widthOffset = (width - sidewallWidth) / 2;
 heightOffset = (height- sidewallHeight) / 2;
 
-module sidewalls()
-{
-    doubleSidewall();
-    translate
-    (
-        [
-            width,
-            0,
-            0
-        ]
-    )
-    {
-        rotate
-        (
-            [
-                0,
-                0,
-                90
-            ]
-        )
-        {
-            doubleSidewall();
-        }
-    }
-}
-
-module doubleSidewall()
-{
-    sidewallMaxThickness = 2;
-    sidewallMinThickness = 1;
-    singleSidewall(sidewallMaxThickness, sidewallMinThickness);
-    translate
-    (
-        [
-            0,
-            height,
-            0
-        ]
-    )
-    {
-        singleSidewall(sidewallMaxThickness, sidewallMinThickness);
-    }
-}
-
-module singleSidewall
-(
-    sidewallMaxThickness,
-    sidewallMinThickness
-)
-{
-    hull()
-    {
-        //Left
-        translate
-        (
-            [
-                0,
-                0,
-                0
-            ]
-        )
-        {
-            cylinder
-            (
-                depth,
-                sidewallMinThickness / 2,
-                sidewallMaxThickness / 2,
-                center = false
-            );
-        }
-
-        //Right
-        translate
-        (
-            [
-                width,
-                0,
-                0
-            ]
-        )
-        {
-            cylinder
-            (
-                depth,
-                sidewallMinThickness / 2,
-                sidewallMaxThickness / 2,
-                center = false
-            );
-        }
-    }
-}
-
-
 module roundedCorners
 (
     x = 0,
@@ -222,7 +129,6 @@ module main()
     )
     {
         newSidewalls();
-        //sidewalls();
         roof();
     }
 }
