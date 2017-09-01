@@ -20,10 +20,10 @@ module mainBody ()
     );    
 }
 
+slitHeight = 12;
 module slit ()
 {
     width = 1.5;
-    slitHeight = 12;
     translate
     (
         [
@@ -169,9 +169,9 @@ module threads()
 
 module split()
 {
-    split_width = 2;
+    split_width = 2.5;
     split_length = 4;
-    split_height = height + 1;
+    split_height = height - slitHeight + 2;
     //leave a gap for assembley
     translate
     (
