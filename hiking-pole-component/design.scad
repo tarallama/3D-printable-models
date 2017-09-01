@@ -169,8 +169,9 @@ module threads()
 
 module split()
 {
-    split_width = 1.5;
+    split_width = 2;
     split_length = 4;
+    split_height = height + 1;
     //leave a gap for assembley
     translate
     (
@@ -186,7 +187,7 @@ module split()
             [
                 split_length,
                 split_width,
-                height+1
+                split_height
             ],
             center = false
         );
