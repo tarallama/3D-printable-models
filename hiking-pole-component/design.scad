@@ -167,17 +167,17 @@ module threads()
 }
 
 
-module split()
+module install_gap()
 {
-    split_width = 2.5;
-    split_length = 4;
-    split_height = height - slitHeight + 2;
-    //leave a gap for assembley
+    install_gap_width = 2.5;
+    install_gap_length = 4;
+    install_gap_height = height - slitHeight + 2;
+
     translate
     (
         [
             -radius,
-            -split_width/2,
+            -install_gap_width/2,
             -1
         ]
     )
@@ -185,9 +185,9 @@ module split()
         cube
         (
             [
-                split_length,
-                split_width,
-                split_height
+                install_gap_length,
+                install_gap_width,
+                install_gap_height
             ],
             center = false
         );
@@ -241,7 +241,7 @@ module main()
                 threads();
             }
             innerCavity();
-            split();
+            install_gap();
             ribs();
         }
     }
