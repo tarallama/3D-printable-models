@@ -169,9 +169,9 @@ module threads()
 
 module install_gap()
 {
-    install_gap_width = 2.5;
-    install_gap_length = 4;
-    install_gap_height = height - slitHeight + 2;
+    install_gap_width = 8;
+    install_gap_length = install_gap_width;
+    install_gap_height = height - slitHeight + 4;
 
     translate
     (
@@ -192,8 +192,46 @@ module install_gap()
             center = false
         );
     }
-}
 
+    cone_height = 8;
+    cone_max_width = 11/2;
+    translate
+    (
+        [
+            -(radius * 3/4),
+            0,
+            height - cone_height - 2
+        ]
+    )
+    {
+        cylinder
+        (
+            h = cone_height,
+            r1 = cone_max_width,
+            r2 = 2,
+            center = false
+        );
+
+        second_cone_height = 2;
+        translate
+        (
+            [
+                0,
+                0,
+                -second_cone_height
+            ]
+        )
+        {
+            cylinder
+            (
+                h = second_cone_height,
+                r1 = 1,
+                r2 = cone_max_width,
+                center = false
+            );
+        }
+    }
+}
 
 module single_rib(offset = 0)
 {
