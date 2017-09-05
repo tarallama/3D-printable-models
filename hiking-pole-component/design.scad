@@ -193,11 +193,11 @@ module install_gap()
     }
 
     cone_height = 8;
-    cone_max_width = 11 / 2;
+    cone_max_width = 12 / 2;
     translate
     (
         [
-            -(radius * 3 / 4),
+            -(radius * 3 / 4) - 0.25,
             0,
             height - cone_height - 2
         ]
@@ -211,7 +211,7 @@ module install_gap()
             center = false
         );
 
-        second_cone_height = 2;
+        second_cone_height = 3;
         translate
         (
             [
