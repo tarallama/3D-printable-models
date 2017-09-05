@@ -65,27 +65,6 @@ module slit ()
     }
 }
 
-module core()
-{
-    //Chop out the inner cone
-    translate
-    (
-        [
-            0,
-            0,
-            coneZPos
-        ]
-    )
-    {
-        cylinder
-        (
-            coneHeight,
-            coneLowerDiam,
-            2.5
-        );
-    }
-}
-
 module threadZone ()
 {
     //Add space for the threads
@@ -110,7 +89,7 @@ module threadZone ()
 
 module innerCavity()
 {
-    //Chop out inner cavity
+    //Cylinder
     translate
     (
         [
@@ -125,6 +104,24 @@ module innerCavity()
             cylHeight+0.5,
             coneLowerDiam,
             coneLowerDiam
+        );
+    }
+
+    //Cone
+    translate
+    (
+        [
+            0,
+            0,
+            coneZPos
+        ]
+    )
+    {
+        cylinder
+        (
+            coneHeight,
+            coneLowerDiam,
+            2.5
         );
     }
 }
@@ -272,7 +269,6 @@ module main()
                 {
                     mainBody();
                     slit();
-                    core();
                     threadZone();
                 }
                 threads();
