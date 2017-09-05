@@ -1,4 +1,4 @@
-$fs = .25;
+$fn = 100;
 radius = 16/2;
 height = 25;
 coneHeight = 6;
@@ -15,8 +15,7 @@ module mainBody ()
         height,
         radius,
         radius,
-        center = false,
-        $fs = $fs
+        center = false
     );    
 }
 
@@ -156,8 +155,7 @@ module threads()
                 1,
                 radius + 1,
                 radius + 1,
-                center = false,
-                $fs = $fs
+                center = false
             );
         }  
     }
