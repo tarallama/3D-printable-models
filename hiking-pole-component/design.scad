@@ -163,7 +163,7 @@ module threads()
     }
 }
 
-module install_gap()
+module installGap()
 {
     install_gap_width = 8;
     install_gap_length = install_gap_width;
@@ -229,7 +229,7 @@ module install_gap()
     }
 }
 
-module single_rib(offset = 0)
+module singleRib(offset = 0)
 {
     size = 1;
     rotate_extrude(angle = 360, convexity = 2)
@@ -250,11 +250,11 @@ module single_rib(offset = 0)
 
 module ribs()
 {
-    single_rib();
-    single_rib(2);
-    single_rib(4);
-    single_rib(6);
-    single_rib(8);
+    singleRib();
+    singleRib(2);
+    singleRib(4);
+    singleRib(6);
+    singleRib(8);
 }
 
 module main()
@@ -274,7 +274,7 @@ module main()
                 threads();
             }
             innerCavity();
-            install_gap();
+            installGap();
             ribs();
         }
     }
