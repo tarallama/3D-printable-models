@@ -2,7 +2,7 @@ $fs = .25;
 radius = 16/2;
 height = 25;
 coneHeight = 6;
-coneLowerDiam = 12/2;
+coneLowerDiam = 11.5/2;
 coneZPos = height-coneHeight-1;
 cylHeight = 4;
 use <ISOThread.scad>; //Thanks a bunch to TrevM, downloaded from https://www.thingiverse.com/thing:311031
@@ -95,13 +95,13 @@ module innerCavity()
         [
             0,
             0,
-            coneZPos-cylHeight
+            coneZPos - cylHeight
         ]
     )
     {
         cylinder
         (
-            cylHeight+0.5,
+            cylHeight,
             coneLowerDiam,
             coneLowerDiam
         );
@@ -139,7 +139,7 @@ module threads()
             ]
         )
         {
-            thread_in(10,16,thr=30);
+            thread_in(10, 16, thr=30);
         }
         
         translate
@@ -154,8 +154,8 @@ module threads()
             cylinder
             (
                 1,
-                radius+1,
-                radius+1,
+                radius + 1,
+                radius + 1,
                 center = false,
                 $fs = $fs
             );
@@ -196,7 +196,7 @@ module installGap()
         [
             -(radius * 3 / 4) - 0.25,
             0,
-            height - cone_height - 2
+            height - cone_height - 0.5
         ]
     )
     {
