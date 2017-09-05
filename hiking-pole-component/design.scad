@@ -263,7 +263,7 @@ module ribs()
 
 module main()
 {
-    rotate(a=[180,0,0])
+    rotate(a=[0,0,90])
     {
         difference()
         {
