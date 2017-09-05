@@ -27,9 +27,9 @@ module slit ()
     translate
     (
         [
-            -width/2,
+            -width / 2,
             -radius,
-            height-slitHeight+1
+            height - slitHeight + 1
         ]
     )
     {
@@ -37,7 +37,7 @@ module slit ()
         (
             [
                 width,
-                (radius*2)+1,
+                (radius * 2) + 1,
                 slitHeight
             ],
             center = false
@@ -49,14 +49,14 @@ module slit ()
         [
             -radius,
             -1,
-            height-slitHeight+1
+            height - slitHeight + 1
         ]
     )
     {    
         cube
         (
             [
-                (radius*2) + 1,
+                (radius * 2) + 1,
                 width,
                 slitHeight
             ],
@@ -65,7 +65,7 @@ module slit ()
     }
 }
 
-module core ()
+module core()
 {
     //Chop out the inner cone
     translate
@@ -166,7 +166,6 @@ module threads()
     }
 }
 
-
 module install_gap()
 {
     install_gap_width = 8;
@@ -177,7 +176,7 @@ module install_gap()
     (
         [
             -radius,
-            -install_gap_width/2,
+            -install_gap_width / 2,
             -1
         ]
     )
@@ -194,11 +193,11 @@ module install_gap()
     }
 
     cone_height = 8;
-    cone_max_width = 11/2;
+    cone_max_width = 11 / 2;
     translate
     (
         [
-            -(radius * 3/4),
+            -(radius * 3 / 4),
             0,
             height - cone_height - 2
         ]
