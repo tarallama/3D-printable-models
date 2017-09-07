@@ -64,6 +64,8 @@ module slit ()
     }
 }
 
+
+cavityDiameter = 5;
 module threadCavity()
 {
     threadHeight = 16;
@@ -79,8 +81,8 @@ module threadCavity()
         cylinder
         (
             threadHeight,
-            5,
-            5
+            cavityDiameter,
+            cavityDiameter
         );
     }
 }
