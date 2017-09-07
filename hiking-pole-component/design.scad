@@ -66,9 +66,9 @@ module slit ()
 
 
 cavityDiameter = 5;
+threadHeight = 16;
 module threadCavity()
 {
-    threadHeight = 16;
     translate
     (
         [
