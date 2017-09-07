@@ -230,19 +230,19 @@ module installGap()
 
 module singleRib(offset = 0)
 {
-    size = 1;
+    diameter = 0.5;
     rotate_extrude(angle = 360, convexity = 2)
     {
         translate
         (
             [
-                radius - 0.5,
-                height - size - 1 - offset,
+                radius,
+                height - diameter - 1 - offset,
                 0
             ]
         )
         {
-            square( size, center = false);
+            circle( diameter, center = false);
         }
     }
 }
