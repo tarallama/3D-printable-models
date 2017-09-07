@@ -64,9 +64,8 @@ module slit ()
     }
 }
 
-module threadZone ()
+module threadCavity()
 {
-    //Add space for the threads
     threadHeight = 16;
     translate
     (
@@ -267,7 +266,7 @@ module main()
                 {
                     mainBody();
                     slit();
-                    threadZone();
+                    threadCavity();
                 }
                 threads();
             }
