@@ -9,14 +9,15 @@ use <ISOThread.scad>; //Thanks a bunch to TrevM, downloaded from https://www.thi
 
 module mainBody () 
 {
-    //Main structural body
     cylinder
     (
         height,
         radius,
         radius,
         center = false
-    );    
+    );
+
+    ribs();
 }
 
 slitHeight = 12;
