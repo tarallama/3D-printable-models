@@ -1,4 +1,4 @@
-$fn = 100;
+$fn = 50;
 radius = 16/2;
 height = 25;
 coneHeight = 6;
