@@ -28,7 +28,7 @@ module slit ()
     (
         [
             -width / 2,
-            -radius,
+            -radius - 1,
             height - (slitHeight / 2) + 1
         ]
     )
@@ -37,7 +37,7 @@ module slit ()
         (
             [
                 width,
-                (radius * 2) + 1,
+                (radius * 2) + 2,
                 slitHeight / 2
             ],
             center = false
@@ -47,7 +47,7 @@ module slit ()
     translate
     (
         [
-            -radius,
+            -radius - 1,
             -1,
             height - slitHeight + 1
         ]
@@ -56,7 +56,7 @@ module slit ()
         cube
         (
             [
-                (radius * 2) + 1,
+                (radius * 2) + 2,
                 width,
                 slitHeight
             ],
