@@ -253,8 +253,6 @@ module ribs()
     singleRib();
     singleRib(2);
     singleRib(4);
-    singleRib(6);
-    singleRib(8);
 }
 
 module main()
