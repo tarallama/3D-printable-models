@@ -29,7 +29,7 @@ module slit ()
         [
             -width / 2,
             -radius - 1,
-            height - (slitHeight / 2) + 1
+            height - slitHeight + 1
         ]
     )
     {
@@ -38,7 +38,7 @@ module slit ()
             [
                 width,
                 (radius * 2) + 2,
-                slitHeight / 2
+                slitHeight
             ],
             center = false
         );
