@@ -165,7 +165,7 @@ module threads()
 
 module installGap()
 {
-    install_gap_width = 8.25;
+    install_gap_width = 7;
     install_gap_length = install_gap_width;
     install_gap_height = height - slitHeight + 4;
 
@@ -194,7 +194,7 @@ module installGap()
     translate
     (
         [
-            -(radius + cone_max_width) / 2 + .5,
+            -(radius + cone_max_width) / 2 - 1,
             -0.25,
             height - cone_height - 2.5
         ]
