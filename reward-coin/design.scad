@@ -1,10 +1,10 @@
 $fn = 100;
-radius = 30;
-structureHeight = 5;
-detailHeight = 2;
-rimThickness = 2;
 
-module structure()
+module structure
+(
+    radius,
+    structureHeight
+)
 {
     cylinder
     (
@@ -18,7 +18,11 @@ module structure()
 module bothSurfaceDetails
 (
     message,
-    positiveText
+    positiveText,
+    structureHeight,
+    detailHeight,
+    rimThickness,
+    radius
 )
 {
     //Top
@@ -26,7 +30,11 @@ module bothSurfaceDetails
     (
         ZPosition  =  structureHeight,
         positiveText = positiveText,
-        message = message
+        message = message,
+        detailHeight = detailHeight,
+        rimThickness = rimThickness,
+        radius = radius,
+        flipped = false
     );
 
     //Bottom
@@ -35,6 +43,9 @@ module bothSurfaceDetails
         ZPosition  =  - detailHeight,
         positiveText = positiveText,
         message = message,
+        detailHeight = detailHeight,
+        rimThickness = rimThickness,
+        radius = radius,
         flipped = true
     );
 }
@@ -42,7 +53,10 @@ module bothSurfaceDetails
 module rim
 (
     position,
-    removeInterior
+    removeInterior,
+    detailHeight,
+    radius,
+    rimThickness
 )
 {
     difference()
@@ -84,6 +98,7 @@ module textFlipper
 (
     position,
     string,
+    detailHeight,
     needsFlipping = false
 )
 {
@@ -101,7 +116,8 @@ module textFlipper
             3dtext
             (
                 position = position,
-                string = string
+                string = string,
+                detailHeight = detailHeight
             );
         }
     }
@@ -110,7 +126,8 @@ module textFlipper
         3dtext
         (
             position = position,
-            string = string
+            string = string,
+            detailHeight = detailHeight
         );
     }
 }
@@ -120,6 +137,9 @@ module singleSurfaceDetail
     ZPosition,
     positiveText,
     message,
+    detailHeight,
+    rimThickness,
+    radius,
     flipped = false
 )
 {
@@ -133,14 +153,18 @@ module singleSurfaceDetail
     {
         rim
         (
-            position,
-            removeInterior = true
+            position = position,
+            removeInterior = true,
+            detailHeight = detailHeight,
+            radius = radius,
+            rimThickness = rimThickness
         );
         textFlipper
         (
-            position,
-            message,
-            flipped
+            position = position,
+            string = message,
+            detailHeight = detailHeight,
+            needsFlipping = flipped
         );
     }
     else
@@ -149,14 +173,18 @@ module singleSurfaceDetail
         {
             rim
             (
-                position,
-                removeInterior = false
+                position = position,
+                removeInterior = false,
+                detailHeight = detailHeight,
+                radius = radius,
+                rimThickness = rimThickness
             );
             textFlipper
             (
-                position,
-                message,
-                flipped
+                position = position,
+                string = message,
+                detailHeight = detailHeight,
+                needsFlipping = flipped
             );
         }
     }
@@ -165,7 +193,8 @@ module singleSurfaceDetail
 module 3dtext
 (
     position,
-    string
+    string,
+    detailHeight
 )
 {
     translate
@@ -177,8 +206,8 @@ module 3dtext
         {
             text
             (
-                string,
-                font="Liberation:style=Bold",
+                text = string,
+                font = "Liberation:style=Bold",
                 valign = "center",
                 halign = "center"
             );
@@ -186,8 +215,15 @@ module 3dtext
     }
 }
 
-
-module coin(message = "TEST", positiveText = true)
+module coin
+(
+    message = "TEST",
+    positiveText = true,
+    radius = 30,
+    structureHeight = 5,
+    detailHeight = 2,
+    rimThickness = 2
+)
 {
     translate
     (
@@ -198,11 +234,19 @@ module coin(message = "TEST", positiveText = true)
         ]
     )
     {
-        structure();
+        structure
+        (
+            radius = radius,
+            structureHeight = structureHeight
+        );
         bothSurfaceDetails
         (
             message = message,
-            positiveText = positiveText
+            positiveText = positiveText,
+            structureHeight = structureHeight,
+            detailHeight = detailHeight,
+            rimThickness = rimThickness,
+            radius = radius
         );
     }
 }
@@ -237,6 +281,10 @@ module testBothStyles()
 
 coin
 (
-    "WINN3R!",
-    positiveText = true
+    message = "TEST",
+    positiveText = true,
+    radius = 30,
+    structureHeight = 5,
+    detailHeight = 2,
+    rimThickness = 2
 );
