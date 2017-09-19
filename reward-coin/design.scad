@@ -89,11 +89,21 @@ module textFlipper
 {
     if(needsFlipping)
     {
-        flipped3dtext
+        mirror
         (
-            position = position,
-            string = string
-        );
+            [
+                1,
+                0,
+                0
+            ]
+        )
+        {
+            3dtext
+            (
+                position = position,
+                string = string
+            );
+        }
     }
     else
     {
@@ -148,35 +158,6 @@ module singleSurfaceDetail
                 message,
                 flipped
             );
-        }
-    }
-}
-
-module flipped3dtext
-(
-    position,
-    string
-)
-{
-    translate
-    (
-        [
-            0,
-            0,
-            detailHeight
-        ]
-    )
-    {
-        translate(position)
-        {
-            rotate([0,180,0])
-            {
-                3dtext
-                (
-                    postition = [0,0,0],
-                    string = string
-                );
-            }
         }
     }
 }
