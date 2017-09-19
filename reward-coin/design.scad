@@ -202,8 +202,8 @@ module 3dtext
                 halign = "center"
             );
         }
-        }
     }
+}
 
 
 module coin(message = "TEST", positiveText = true)
