@@ -235,4 +235,8 @@ module testBothStyles()
     }
 }
 
-testBothStyles();
+coin
+(
+    "WINN3R!",
+    positiveText = true
+);
