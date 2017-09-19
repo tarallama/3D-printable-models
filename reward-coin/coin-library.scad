@@ -250,31 +250,3 @@ module coin
         );
     }
 }
-
-module testBothStyles()
-{
-    rotate(a=[0,0,0])
-    {
-        coin
-        (
-            message = "LEMON",
-            positiveText = true
-        );
-    }
-
-    translate
-    (
-        [
-            radius * 2 + radius / 2,
-            0,
-            0
-        ]
-    )
-    {
-        coin
-        (
-            message = "LIME",
-            positiveText = false
-        );
-    }
-}
