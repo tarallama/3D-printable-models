@@ -228,6 +228,7 @@ module coin
 (
     message = "TEST",
     positiveText = true,
+    topSurfaceOnly = false,
     radius = 30,
     structureHeight = 5,
     detailHeight = 2,
@@ -249,16 +250,34 @@ module coin
             radius = radius,
             structureHeight = structureHeight
         );
-        bothSurfaceDetails
-        (
-            message = message,
-            positiveText = positiveText,
-            structureHeight = structureHeight,
-            detailHeight = detailHeight,
-            rimThickness = rimThickness,
-            radius = radius,
-            textSize = textSize
-        );
+
+        if(topSurfaceOnly)
+        {
+            singleSurfaceDetail
+            (
+                ZPosition = structureHeight,
+                positiveText = positiveText,
+                message = message,
+                detailHeight = detailHeight,
+                rimThickness = rimThickness,
+                radius = radius,
+                textSize = textSize,
+                flipped = false
+            );
+        }
+        else
+        {
+            bothSurfaceDetails
+            (
+                message = message,
+                positiveText = positiveText,
+                structureHeight = structureHeight,
+                detailHeight = detailHeight,
+                rimThickness = rimThickness,
+                radius = radius,
+                textSize = textSize
+            );
+        }
     }
 }
 
