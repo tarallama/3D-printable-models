@@ -4,9 +4,10 @@ $fn = 200;
 coin
 (
     message = "NICE!",
-    positiveText = true,
-    radius = 30,
-    structureHeight = 5,
-    detailHeight = 2,
-    rimThickness = 2
+    positiveText = false,
+    radius = 24,
+    structureHeight = 4,
+    detailHeight = 1,
+    rimThickness = 2,
+    textSize = 10
 );
