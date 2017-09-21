@@ -20,7 +20,8 @@ module bothSurfaceDetails
     structureHeight,
     detailHeight,
     rimThickness,
-    radius
+    radius,
+    textSize
 )
 {
     //Top
@@ -32,6 +33,7 @@ module bothSurfaceDetails
         detailHeight = detailHeight,
         rimThickness = rimThickness,
         radius = radius,
+        textSize = textSize,
         flipped = false
     );
 
@@ -44,6 +46,7 @@ module bothSurfaceDetails
         detailHeight = detailHeight,
         rimThickness = rimThickness,
         radius = radius,
+        textSize = textSize,
         flipped = true
     );
 }
@@ -97,6 +100,7 @@ module textFlipper
     position,
     string,
     detailHeight,
+    textSize,
     needsFlipping = false
 )
 {
@@ -115,7 +119,8 @@ module textFlipper
             (
                 position = position,
                 string = string,
-                detailHeight = detailHeight
+                detailHeight = detailHeight,
+                textSize = textSize
             );
         }
     }
@@ -125,7 +130,8 @@ module textFlipper
         (
             position = position,
             string = string,
-            detailHeight = detailHeight
+            detailHeight = detailHeight,
+            textSize = textSize
         );
     }
 }
@@ -138,6 +144,7 @@ module singleSurfaceDetail
     detailHeight,
     rimThickness,
     radius,
+    textSize,
     flipped = false
 )
 {
@@ -162,7 +169,8 @@ module singleSurfaceDetail
             position = position,
             string = message,
             detailHeight = detailHeight,
-            needsFlipping = flipped
+            needsFlipping = flipped,
+            textSize = textSize
         );
     }
     else
@@ -182,7 +190,8 @@ module singleSurfaceDetail
                 position = position,
                 string = message,
                 detailHeight = detailHeight,
-                needsFlipping = flipped
+                needsFlipping = flipped,
+                textSize = textSize
             );
         }
     }
@@ -192,7 +201,8 @@ module 3dtext
 (
     position,
     string,
-    detailHeight
+    detailHeight,
+    textSize
 )
 {
     translate
@@ -205,6 +215,7 @@ module 3dtext
             text
             (
                 text = string,
+                size = textSize,
                 font = "Liberation:style=Bold",
                 valign = "center",
                 halign = "center"
@@ -220,7 +231,8 @@ module coin
     radius = 30,
     structureHeight = 5,
     detailHeight = 2,
-    rimThickness = 2
+    rimThickness = 2,
+    textSize = 12
 )
 {
     translate
@@ -244,7 +256,8 @@ module coin
             structureHeight = structureHeight,
             detailHeight = detailHeight,
             rimThickness = rimThickness,
-            radius = radius
+            radius = radius,
+            textSize = textSize
         );
     }
 }
