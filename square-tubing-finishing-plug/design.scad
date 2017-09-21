@@ -112,9 +112,12 @@ module sidewalls()
     }
 }
 
-module chamfer()
+module chamfer
+(
+    angle = 45
+)
 {
-    half_chamfer();
+    half_chamfer( angle = angle );
     translate
     (
         [
@@ -126,12 +129,15 @@ module chamfer()
     {
         rotate(a = [0, 0, 180])
         {
-            half_chamfer();
+            half_chamfer( angle = angle );
         }
     }
 }
 
-module half_chamfer()
+module half_chamfer
+(
+    angle = 45
+)
 {
     translate
     (
@@ -142,7 +148,7 @@ module half_chamfer()
         ]
     )
     {
-        rotate(a = [45, 0, 0])
+        rotate(a = [90 - angle, 0, 0])
         {
             cube
             (
@@ -165,7 +171,7 @@ module half_chamfer()
         ]
     )
     {
-        rotate(a = [45, 0, 90])
+        rotate(a = [angle, 0, 90])
         {
             cube
             (
