@@ -210,7 +210,7 @@ module roof()
             );
         }
 
-        chamfer();
+        chamfer(30);
     }
 }
 
