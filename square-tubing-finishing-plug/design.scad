@@ -127,7 +127,14 @@ module chamfer
         ]
     )
     {
-        rotate(a = [0, 0, 180])
+        rotate
+        (
+            [
+                0,
+                0,
+                180
+            ]
+        )
         {
             half_chamfer( angle = angle );
         }
@@ -148,7 +155,14 @@ module half_chamfer
         ]
     )
     {
-        rotate(a = [90 - angle, 0, 0])
+        rotate
+        (
+            [
+                90 - angle,
+                0,
+                0
+            ]
+        )
         {
             cube
             (
@@ -171,7 +185,14 @@ module half_chamfer
         ]
     )
     {
-        rotate(a = [angle, 0, 90])
+        rotate
+        (
+            [
+                angle,
+                0,
+                90
+            ]
+        )
         {
             cube
             (
