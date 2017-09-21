@@ -10,6 +10,8 @@ sidewallWidth = width - cornerDiameter - 1.5;
 sidewallHeight = height - cornerDiameter - 1.5;
 widthOffset = (width - sidewallWidth) / 2;
 heightOffset = (height - sidewallHeight) / 2;
+roofWidth = width + (widthOffset * 2);
+roofHeight = height + (heightOffset * 2);
 
 module roundedCorners
 (
@@ -110,10 +112,27 @@ module sidewalls()
     }
 }
 
-module roof()
+module chamfer()
 {
-    roofWidth = width + (widthOffset * 2);
-    roofHeight = height + (heightOffset * 2);
+    half_chamfer();
+    translate
+    (
+        [
+            width,
+            height,
+            0
+        ]
+    )
+    {
+        rotate(a = [0, 0, 180])
+        {
+            half_chamfer();
+        }
+    }
+}
+
+module half_chamfer()
+{
     translate
     (
         [
@@ -123,15 +142,69 @@ module roof()
         ]
     )
     {
-        cube
+        rotate(a = [45, 0, 0])
+        {
+            cube
+            (
+                [
+                    roofWidth,
+                    roofDepth * 2,
+                    roofDepth * 2
+                ],
+                center = false
+            );
+        }
+    }
+
+    translate
+    (
+        [
+            -widthOffset,
+            -heightOffset,
+            depth
+        ]
+    )
+    {
+        rotate(a = [45, 0, 90])
+        {
+            cube
+            (
+                [
+                    roofWidth,
+                    roofDepth * 2,
+                    roofDepth * 2
+                ],
+                center = false
+            );
+        }
+    }
+}
+
+module roof()
+{
+    difference()
+    {
+        translate
         (
             [
-                roofWidth,
-                roofHeight,
-                roofDepth
-            ],
-            center = false
-        );
+                -widthOffset,
+                -heightOffset,
+                depth
+            ]
+        )
+        {
+            cube
+            (
+                [
+                    roofWidth,
+                    roofHeight,
+                    roofDepth
+                ],
+                center = false
+            );
+        }
+
+        chamfer();
     }
 }
 
