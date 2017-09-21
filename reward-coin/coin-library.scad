@@ -1,5 +1,3 @@
-$fn = 100;
-
 module structure
 (
     radius,

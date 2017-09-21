@@ -1,4 +1,5 @@
 use <coin-library.scad>;
+$fn = 200;
 
 coin
 (
