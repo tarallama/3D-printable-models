@@ -15,7 +15,9 @@ module roundedCorners
 (
     x = 0,
     y = 0,
-    z = 0
+    z = 0,
+    width = width,
+    height = height
 )
 {
     translate
@@ -23,7 +25,7 @@ module roundedCorners
         [
             x + widthOffset,
             y + heightOffset,
-            z + 0
+            z
         ]
     )
     {
@@ -41,8 +43,8 @@ module roundedCorners
             (
                 size =
                 [
-                    sidewallWidth,
-                    sidewallHeight,
+                    width,
+                    height,
                     1
                 ],
                 center = false
@@ -57,33 +59,53 @@ module sidewalls()
     {
         hull()
         {
-            roundedCorners();
+            //Top
             roundedCorners
             (
-                0,
-                0,
-                depth
+                x = 0,
+                y = 0,
+                z = 0,
+                width = sidewallWidth,
+                height = sidewallHeight
+            );
+
+            //Bottom
+            roundedCorners
+            (
+                x = 0,
+                y = 0,
+                z = depth,
+                width = sidewallWidth,
+                height = sidewallHeight
             );
         }
 
         translate
         (
             [
-                widthOffset,
-                heightOffset,
+                sidewallThickness,
+                sidewallThickness,
                 -1
             ]
         )
         {
-            cube
-            (
-                [
-                    sidewallWidth,
-                    sidewallHeight,
-                    depth + 1
-                ],
-                center = false
-            );
+            hull()
+            {
+                //Top
+                roundedCorners
+                (
+                    width = sidewallWidth - (sidewallThickness * 2),
+                    height = sidewallHeight - (sidewallThickness * 2)
+                );
+
+                //Bottom
+                roundedCorners
+                (
+                    width = sidewallWidth - (sidewallThickness * 2),
+                    height = sidewallHeight - (sidewallThickness * 2),
+                    z = depth
+                );
+            }
         }
     }
 }
