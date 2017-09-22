@@ -18,8 +18,8 @@ module roundedCorners
     x = 0,
     y = 0,
     z = 0,
-    width = width,
-    height = height
+    width = 10,
+    height = 10
 )
 {
     translate
