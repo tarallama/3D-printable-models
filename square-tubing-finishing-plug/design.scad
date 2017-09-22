@@ -93,18 +93,20 @@ module sidewalls()
         {
             hull()
             {
+                wide = sidewallWidth - (sidewallThickness * 2);
+                hide = sidewallHeight - (sidewallThickness * 2);
                 //Top
                 roundedCorners
                 (
-                    width = sidewallWidth - (sidewallThickness * 2),
-                    height = sidewallHeight - (sidewallThickness * 2)
+                    width = wide,
+                    height = hide
                 );
 
                 //Bottom
                 roundedCorners
                 (
-                    width = sidewallWidth - (sidewallThickness * 2),
-                    height = sidewallHeight - (sidewallThickness * 2),
+                    width = wide,
+                    height = hide,
                     z = depth
                 );
             }
