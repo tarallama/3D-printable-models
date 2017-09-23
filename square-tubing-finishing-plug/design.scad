@@ -26,8 +26,8 @@ module roundedCorners
     translate
     (
         [
-            x + roofOverhang,
-            y + roofOverhang,
+            x + cornerRadius,
+            y + cornerRadius,
             z
         ]
     )
