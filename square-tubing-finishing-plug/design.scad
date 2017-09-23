@@ -1,5 +1,5 @@
 $fn = 100;
-width = 45;
+width = 44.5;
 height = width;
 depth = 13;
 
