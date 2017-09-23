@@ -4,15 +4,15 @@ height = width;
 depth = 13;
 
 cornerRadius = 4;
-roofDepth = 3;
-sidewallThickness = 1.5;
 cornerDiameter = cornerRadius * 2;
-sidewallWidth = width - cornerDiameter - 1.5;
-sidewallHeight = height - cornerDiameter - 1.5;
-widthOffset = (width - sidewallWidth) / 2;
-heightOffset = (height - sidewallHeight) / 2;
-roofWidth = width + (widthOffset * 2);
-roofHeight = height + (heightOffset * 2);
+sidewallThickness = 1.5;
+sidewallWidth = width - cornerDiameter;
+sidewallHeight = height - cornerDiameter;
+
+roofDepth = 3;
+roofOverhang = 2.75;
+roofWidth = width + (roofOverhang * 2);
+roofHeight = height + (roofOverhang * 2);
 
 module roundedCorners
 (
@@ -26,8 +26,8 @@ module roundedCorners
     translate
     (
         [
-            x + widthOffset,
-            y + heightOffset,
+            x + roofOverhang,
+            y + roofOverhang,
             z
         ]
     )
@@ -83,6 +83,7 @@ module sidewalls()
             );
         }
 
+        //Interior
         translate
         (
             [
@@ -100,7 +101,8 @@ module sidewalls()
                 roundedCorners
                 (
                     width = wide,
-                    height = hide
+                    height = hide,
+                    z = 0
                 );
 
                 //Bottom
@@ -152,8 +154,8 @@ module half_chamfer
     translate
     (
         [
-            -widthOffset,
-            -heightOffset,
+            -roofOverhang,
+            -roofOverhang,
             depth
         ]
     )
@@ -182,8 +184,8 @@ module half_chamfer
     translate
     (
         [
-            -widthOffset,
-            -heightOffset,
+            -roofOverhang,
+            -roofOverhang,
             depth
         ]
     )
@@ -217,8 +219,8 @@ module roof()
         translate
         (
             [
-                -widthOffset,
-                -heightOffset,
+                -roofOverhang,
+                -roofOverhang,
                 depth
             ]
         )
@@ -234,7 +236,7 @@ module roof()
             );
         }
 
-        chamfer(30);
+        chamfer(angle = 30);
     }
 }
 
