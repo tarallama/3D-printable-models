@@ -1,7 +1,8 @@
 $fn = 100;
 width = 45;
 height = width;
-depth = 15;
+depth = 13;
+
 cornerRadius = 4;
 roofDepth = 3;
 sidewallThickness = 1.5;
