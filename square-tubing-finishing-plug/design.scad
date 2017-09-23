@@ -110,7 +110,7 @@ module sidewalls()
                 (
                     width = wide,
                     height = hide,
-                    z = depth
+                    z = depth + 2
                 );
             }
         }
