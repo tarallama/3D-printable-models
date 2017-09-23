@@ -199,7 +199,7 @@ module half_chamfer
         cube
         (
             [
-                roofWidth,
+                roofHeight,
                 roofDepth * 2,
                 roofDepth * 2
             ],
