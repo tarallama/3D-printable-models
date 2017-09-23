@@ -126,8 +126,8 @@ module chamfer
     translate
     (
         [
-            width,
-            height,
+            roofWidth,
+            roofHeight,
             0
         ]
     )
@@ -151,79 +151,59 @@ module half_chamfer
     angle = 45
 )
 {
-    translate
+    rotate
     (
         [
-            -roofOverhang,
-            -roofOverhang,
-            depth
+            90 - angle,
+            0,
+            0
         ]
     )
     {
-        rotate
+        cube
         (
             [
-                90 - angle,
-                0,
-                0
-            ]
-        )
-        {
-            cube
-            (
-                [
-                    roofWidth,
-                    roofDepth * 2,
-                    roofDepth * 2
-                ],
-                center = false
-            );
-        }
+                roofWidth,
+                roofDepth * 2,
+                roofDepth * 2
+            ],
+            center = false
+        );
     }
 
-    translate
+    rotate
     (
         [
-            -roofOverhang,
-            -roofOverhang,
-            depth
+            angle,
+            0,
+            90
         ]
     )
     {
-        rotate
+        cube
         (
             [
-                angle,
-                0,
-                90
-            ]
-        )
-        {
-            cube
-            (
-                [
-                    roofWidth,
-                    roofDepth * 2,
-                    roofDepth * 2
-                ],
-                center = false
-            );
-        }
+                roofWidth,
+                roofDepth * 2,
+                roofDepth * 2
+            ],
+            center = false
+        );
     }
 }
 
 module roof()
 {
-    difference()
+    translate
+    (
+        [
+            -roofOverhang,
+            -roofOverhang,
+            depth
+        ]
+    )
     {
-        translate
-        (
-            [
-                -roofOverhang,
-                -roofOverhang,
-                depth
-            ]
-        )
+        difference()
         {
             cube
             (
@@ -234,9 +214,9 @@ module roof()
                 ],
                 center = false
             );
-        }
 
-        chamfer(angle = 30);
+            chamfer(angle = 30);
+        }
     }
 }
 
