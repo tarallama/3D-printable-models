@@ -1,26 +1,13 @@
 $fn = 100;
-width = 44.5;
-height = width;
-depth = 13;
-
-cornerRadius = 4;
-cornerDiameter = cornerRadius * 2;
-sidewallThickness = 1.5;
-sidewallWidth = width - cornerDiameter;
-sidewallHeight = height - cornerDiameter;
-
-roofDepth = 3;
-roofOverhang = 2.75;
-roofWidth = width + (roofOverhang * 2);
-roofHeight = height + (roofOverhang * 2);
 
 module roundedCorners
 (
     x = 0,
     y = 0,
     z = 0,
-    width = 10,
-    height = 10
+    width,
+    height,
+    cornerRadius
 )
 {
     translate
@@ -56,8 +43,18 @@ module roundedCorners
     }
 }
 
-module sidewalls()
+module sidewalls
+(
+    cornerRadius,
+    sidewallThickness,
+    width,
+    height,
+    depth
+)
 {
+    cornerDiameter = cornerRadius * 2;
+    sidewallWidth = width - cornerDiameter;
+    sidewallHeight = height - cornerDiameter;
     difference()
     {
         hull()
@@ -65,21 +62,19 @@ module sidewalls()
             //Top
             roundedCorners
             (
-                x = 0,
-                y = 0,
                 z = 0,
                 width = sidewallWidth,
-                height = sidewallHeight
+                height = sidewallHeight,
+                cornerRadius = cornerRadius
             );
 
             //Bottom
             roundedCorners
             (
-                x = 0,
-                y = 0,
                 z = depth,
                 width = sidewallWidth,
-                height = sidewallHeight
+                height = sidewallHeight,
+                cornerRadius = cornerRadius
             );
         }
 
@@ -102,7 +97,8 @@ module sidewalls()
                 (
                     width = wide,
                     height = hide,
-                    z = 0
+                    z = 0,
+                    cornerRadius = cornerRadius
                 );
 
                 //Bottom
@@ -110,7 +106,8 @@ module sidewalls()
                 (
                     width = wide,
                     height = hide,
-                    z = depth + 2
+                    z = depth + 2,
+                    cornerRadius = cornerRadius
                 );
             }
         }
@@ -119,10 +116,20 @@ module sidewalls()
 
 module chamfer
 (
-    angle = 45
+    angle = 45,
+    roofWidth,
+    roofHeight,
+    roofDepth
 )
 {
-    half_chamfer( angle = angle );
+    half_chamfer
+    (
+        angle = angle,
+        roofWidth = roofWidth,
+        roofHeight = roofHeight,
+        roofDepth = roofDepth
+    );
+
     translate
     (
         [
@@ -141,14 +148,23 @@ module chamfer
             ]
         )
         {
-            half_chamfer( angle = angle );
+            half_chamfer
+            (
+                angle = angle,
+                roofWidth = roofWidth,
+                roofHeight = roofHeight,
+                roofDepth = roofDepth
+            );
         }
     }
 }
 
 module half_chamfer
 (
-    angle = 45
+    angle = 45,
+    roofWidth,
+    roofHeight,
+    roofDepth
 )
 {
     rotate
@@ -192,8 +208,17 @@ module half_chamfer
     }
 }
 
-module roof()
+module roof
+(
+    width,
+    height,
+    depth,
+    roofDepth,
+    roofOverhang
+)
 {
+    roofWidth = width + (roofOverhang * 2);
+    roofHeight = height + (roofOverhang * 2);
     translate
     (
         [
@@ -215,12 +240,27 @@ module roof()
                 center = false
             );
 
-            chamfer(angle = 30);
+            chamfer
+            (
+                angle = 30,
+                roofWidth = roofWidth,
+                roofHeight = roofHeight,
+                roofDepth = roofDepth
+            );
         }
     }
 }
 
-module main()
+module main
+(
+    depth = 13,
+    width = 44.5,
+    height = 44.5,
+    roofDepth = 3,
+    roofOverhang = 2.75,
+    cornerRadius = 4,
+    sidewallThickness = 1.5
+)
 {
     rotate
     (
@@ -231,8 +271,24 @@ module main()
         ]
     )
     {
-        sidewalls();
-        roof();
+
+        sidewalls
+        (
+            cornerRadius = cornerRadius,
+            sidewallThickness = sidewallThickness,
+            width = width,
+            height = height,
+            depth = depth
+        );
+
+        roof
+        (
+            width = width,
+            height = height,
+            depth = depth,
+            roofDepth = roofDepth,
+            roofOverhang = roofOverhang
+        );
     }
 }
 
