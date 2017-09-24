@@ -254,8 +254,8 @@ module roof
 module main
 (
     depth = 13,
-    width = 44.5,
-    height = 44.5,
+    width = 44.25,
+    height = 44.25,
     roofDepth = 3,
     roofOverhang = 2.75,
     cornerRadius = 4,
