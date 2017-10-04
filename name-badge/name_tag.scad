@@ -2,64 +2,130 @@
   Created by Aaron Ciuffo http://www.thingiverse.com/txoof/about
   Released under the Creative Commons Attrib-Share-Alike license
   16 December 2015
-
 */
 
-/* [Base] */
-xSize = 45; // length
-ySize = 15; // height
-zSize = 3; //thickness
-holeDia = 3.5; // hole diameter
-
-/* [Text] */
-textHeight = 2; // [1:10] 
-textSize = 7.5; // [1:50]
-myFont = "Liberation Sans"; // [Liberation Mono, Liberation Sans, Liberation Sans Narrow and Liberation Serif]
-myColor = "yellow"; // [green, yellow, blue, red, silver, black]
-myText = "My Name"; // Your name here!
-
-/* [Hidden] */
-holeRad = holeDia/2;
-
-// preview[view:south, tilt:top diagonal] 
-baseSize = [xSize, ySize, zSize];
-
+$fn = 25;
 include <MCAD/boxes.scad>
 
+yourName = "PERSON"; //Type your name inside these quotes
 
-module textExtrude() {
-  color(myColor)
-    linear_extrude(height = textHeight) 
-    text(myText, halign = "center", valign = "center", size = textSize, font = myFont);
-}
+//Base plate dimensions
+width = 60;
+height = 38;
+thickness = 3;
 
-module base() {
-  roundedBox(baseSize, radius = 3, sidesonly = 1, $fn = 36);
-  //cube(baseSize, center = true);
-}
+//Text
+textThickness = 2.5;
+headerOffset = 2.5;
+headerSize = 10;
+nameOffset = 0.5;
+nameSize = 11;
 
-module holes() {
-  translate([-xSize/2+holeDia, ySize/2-holeDia, 0])
-  //translate([-xSize/2+holeDia, ySize/2, 0])
-    cylinder(r = holeRad, h = 2*zSize, $fn = 36, center = true);
-  translate([xSize/2-holeDia, ySize/2-holeDia, 0])
-  //translate([xSize/2-holeDia, ySize/2, 0])
-    cylinder(r = holeRad, h = 2*zSize, $fn = 36, center = true);
-}
-
-module makeTag() {
-  difference () {
-    union() {
-      base();
-      //translate([0, -ySize/5 , zSize/2]) textExtrude();
-      translate([0, -3, 1.5]) textExtrude();
+module textExtrude
+(
+    textHeight = textThickness,
+    textSize = 7.5,
+    message = "test",
+    textColor = "black", // [green, yellow, blue, red, silver, black]
+    textFont = "Liberation Sans" // [Liberation Mono, Liberation Sans, Liberation Sans Narrow and Liberation Serif]
+)
+{
+    color(textColor)
+    {
+        linear_extrude
+        (
+            height = textHeight
+        )
+        {
+            text
+            (
+                message,
+                halign = "center",
+                valign = "center",
+                size = textSize,
+                font = textFont
+            );
+        }
     }
-    holes();
-  }
+}
 
+module base
+(
+    xSize = 48,
+    ySize = 25,
+    zSize = 3
+)
+{
+    baseSize =
+    [
+        xSize,
+        ySize,
+        zSize
+    ];
+    roundedBox
+    (
+        baseSize,
+        radius = 3,
+        sidesonly = 1
+    );
+}
+
+module makeTag()
+{
+    translate
+    (
+        [
+            0,
+            headerSize + headerOffset,
+            thickness / 2
+        ]
+    )
+    {
+        textExtrude
+        (
+            message = "HELLO",
+            textSize = headerSize
+        );
+
+        translate
+        (
+            [
+                0,
+                -headerSize,
+                0
+            ]
+        )
+        {
+            textExtrude
+            (
+                message = "MY NAME IS",
+                textSize = headerSize * (1 / 2)
+            );
+        }
+    }
+
+    translate
+    (
+        [
+            0,
+            -nameSize + nameOffset,
+            thickness / 2
+        ]
+    )
+    {
+        textExtrude
+        (
+            message = yourName,
+            textSize = nameSize
+        );
+    }
+
+    base
+    (
+        xSize = width,
+        ySize = height,
+        zSize = thickness
+    );
 }
 
 makeTag();
-//base();
-//holes();
-//textExtrude();
