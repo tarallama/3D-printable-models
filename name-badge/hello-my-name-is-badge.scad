@@ -10,16 +10,16 @@ include <MCAD/boxes.scad>
 yourName = "PERSON"; //Type your name inside these quotes
 
 //Base plate dimensions
-width = 60;
-height = 38;
-thickness = 3;
+width = 110;
+height = 70;
+thickness = 2;
 
 //Text
-textThickness = 2.5;
-headerOffset = 2.5;
-headerSize = 10;
-nameOffset = 0.5;
-nameSize = 11;
+textThickness = 2;
+headerOffset = 8;
+headerSize = 14;
+nameOffset = 0;
+nameSize = 20;
 
 module textExtrude
 (
@@ -99,7 +99,7 @@ module makeTag()
             textExtrude
             (
                 message = "MY NAME IS",
-                textSize = headerSize * (1 / 2)
+                textSize = headerSize * (2 / 5)
             );
         }
     }
@@ -115,7 +115,7 @@ module makeTag()
     {
         textExtrude
         (
-            message = yourName,
+            message = "Nick Tait",
             textSize = nameSize
         );
     }
