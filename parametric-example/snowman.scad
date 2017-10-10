@@ -1,6 +1,10 @@
 $fn = 100;
 
-module sphereman(size)
+size = 20;
+snowman(size = size);
+cubeman(size = size);
+
+module snowman(size)
 {
     sphere(size);
 
@@ -43,7 +47,3 @@ module cubeman(size)
         }
     }
 }
-
-size = 20;
-sphereman(size = size);
-cubeman(size = size);
