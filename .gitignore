@@ -1,3 +1,4 @@
 *.g
 *.gcode
 *.txt
+!notes.txt
