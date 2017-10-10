@@ -1,6 +1,6 @@
 $fn = 100;
 
-module snowman(size)
+module sphereman(size)
 {
     sphere(size);
 
@@ -15,45 +15,35 @@ module snowman(size)
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Content below this line cuts a flat bottom into the snowman
-// which allows for easy 3d printing
-
-difference()
+module cubeman(size)
 {
-    size = 20;
-    snowman(size = size);
-
-    translate([-size,-size,-size*2.5])
+    translate
+    (
+        [
+            size * 2,
+            0,
+            0
+        ]
+    )
     {
-        cube(size * 2);
+        cube(size);
+
+        secondSize = size * 2/3;
+        secondXYOffset = size / 2 - secondSize / 2;
+        translate([secondXYOffset,secondXYOffset,size])
+        {
+            cube(secondSize);
+        }
+
+        thirdSize = size / 2;
+        thirdXYOffset = size / 2 - thirdSize / 2;
+        translate([thirdXYOffset,thirdXYOffset,size+secondSize])
+        {
+            cube(thirdSize);
+        }
     }
 }
+
+size = 20;
+sphereman(size = size);
+cubeman(size = size);
