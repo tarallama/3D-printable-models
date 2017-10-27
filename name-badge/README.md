@@ -5,5 +5,5 @@ In the style of a "Hello my name is" single-use sticker badge, but more reusable
 Builds upon the work of Aaron Ciuffo (txoof) https://www.thingiverse.com/thing:1204005
 
 # Recommended settings for 3D Printing:
-* Orientation: Large flat surface against print surface
-* Material: two different colors which provide adequate contrast for high readability
+- Orientation: Large flat surface against print surface
+- Material: two different colors which provide adequate contrast for high readability
