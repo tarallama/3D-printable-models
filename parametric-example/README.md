@@ -1,5 +1,0 @@
-# Notes
-Simple demo of parametric modeling
-
-# Recommended settings for 3D Printing:
-- Not a very useful object so don't bother
