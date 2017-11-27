@@ -1,35 +1,47 @@
-$fs = .1;
+$fn = 100;
 footrest_pole_radius = 13/2;
-footrest_pole_length = 1; //360;
-
-module mock()
-{
-    %cylinder
-    (
-        h = footrest_pole_length,
-        r = footrest_pole_radius,
-        center = false
-    );
-}
+footrest_pole_length = 10; //360;
 
 module mainBody()
 {
-    gripper_radius = 2;
-    translate
-    (
-        [
-            footrest_pole_radius + gripper_radius,
-            0,
-            0
-        ]
-    )
+    gripper_width = 3;
+    total_width = (footrest_pole_radius + gripper_width) * 2;
+
+    difference()
     {
         cylinder
         (
             h = footrest_pole_length,
-            r = gripper_radius,
+            r = footrest_pole_radius + (gripper_width / 2),
             center = false
         );
+
+        cylinder
+        (
+            h = footrest_pole_length,
+            r = footrest_pole_radius,
+            center = false
+        );
+
+        translate
+        (
+            [
+                total_width * (1 / 4),
+                -total_width / 2,
+                0
+            ]
+        )
+        {
+            cube
+            (
+                size =
+                [
+                    total_width,
+                    total_width,
+                    footrest_pole_length
+                ]
+            );
+        }
     }
 }
 
@@ -38,7 +50,6 @@ module main()
     rotate(a=[0,0,0])
     {
         mainBody();
-        mock();
     }
 }
 
