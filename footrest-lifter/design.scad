@@ -1,6 +1,8 @@
 $fn = 100;
 footrest_pole_radius = 13/2;
 footrest_pole_length = 20;
+extra_width = 40;
+extra_height = 20;
 
 module connector()
 {
@@ -86,8 +88,6 @@ module lifter
         }
 
         //Stabilization foot
-        extra_width = 40;
-        extra_height = 20;
         translate
         (
             [
