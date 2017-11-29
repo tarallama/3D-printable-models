@@ -1,10 +1,10 @@
 $fn = 100;
 footrest_pole_radius = 13/2;
-footrest_pole_length = 20; //360;
+footrest_pole_length = 10; //360;
 
 module connector()
 {
-    gripper_width = 5;
+    gripper_width = 6;
     total_width = footrest_pole_radius * 2 + gripper_width;
     
     difference()
@@ -38,7 +38,7 @@ module connector()
         translate
         (
             [
-                footrest_pole_radius - footrest_pole_radius / 6,
+                footrest_pole_radius - (5 / 12) * footrest_pole_radius,
                 -total_width / 2,
                 0
             ]
