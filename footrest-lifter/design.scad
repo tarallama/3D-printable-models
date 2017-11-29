@@ -2,7 +2,7 @@ $fn = 100;
 footrest_pole_radius = 13/2;
 footrest_pole_length = 20; //360;
 
-module mainBody()
+module connector()
 {
     gripper_width = 5;
     total_width = (footrest_pole_radius + gripper_width) * 2;
@@ -43,6 +43,11 @@ module mainBody()
             );
         }
     }
+}
+
+module mainBody()
+{
+    connector();
 }
 
 module main()
