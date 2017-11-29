@@ -5,17 +5,24 @@ footrest_pole_length = 20; //360;
 module connector()
 {
     gripper_width = 5;
-    total_width = (footrest_pole_radius + gripper_width) * 2;
-
+    total_width = footrest_pole_radius * 2 + gripper_width;
+    
     difference()
     {
-        cylinder
-        (
-            h = footrest_pole_length,
-            r = footrest_pole_radius + (gripper_width / 2),
-            center = false
-        );
+        union()
+        {
+            //Main structural sidewall
+            cylinder
+            (
+                h = footrest_pole_length,
+                r = footrest_pole_radius + (gripper_width / 2),
+                center = false
+            );
 
+            lifter(total_width = total_width);
+        }
+
+        //Drill out interior
         cylinder
         (
             h = footrest_pole_length,
@@ -23,6 +30,7 @@ module connector()
             center = false
         );
 
+        //Create opening for intallation
         translate
         (
             [
