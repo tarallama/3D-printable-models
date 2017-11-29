@@ -1,8 +1,8 @@
 $fn = 100;
 footrest_pole_radius = 13/2;
-footrest_pole_length = 20;
-extra_width = 40;
-extra_height = 20;
+footrest_pole_length = 30;
+extra_width = 50;
+extra_height = 35;
 
 module connector()
 {
