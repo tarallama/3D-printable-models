@@ -45,6 +45,28 @@ module connector()
     }
 }
 
+module lifter(total_width = 1)
+{
+    translate
+    (
+        [
+            -footrest_pole_length,
+            -total_width / 2,
+            0
+        ]
+    )
+    {
+        cube
+        (
+            [
+                footrest_pole_length,
+                total_width,
+                footrest_pole_length
+            ]
+        );
+    }
+}
+
 module mainBody()
 {
     connector();
