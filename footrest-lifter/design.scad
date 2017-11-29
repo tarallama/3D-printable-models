@@ -31,7 +31,7 @@ module connector()
         //Drill out interior
         cylinder
         (
-            h = footrest_pole_length,
+            h = footrest_pole_length + extra_height,
             r = footrest_pole_radius,
             center = false
         );
