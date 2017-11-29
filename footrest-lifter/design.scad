@@ -19,7 +19,11 @@ module connector()
                 center = false
             );
 
-            lifter(total_width = total_width);
+            lifter
+            (
+                total_width = total_width,
+                raise_height = 160
+            );
         }
 
         //Drill out interior
@@ -53,12 +57,16 @@ module connector()
     }
 }
 
-module lifter(total_width = 1)
+module lifter
+(
+    total_width = 1,
+    raise_height = 1
+)
 {
     translate
     (
         [
-            -footrest_pole_length,
+            -footrest_pole_length - raise_height,
             -total_width / 2,
             0
         ]
@@ -67,7 +75,7 @@ module lifter(total_width = 1)
         cube
         (
             [
-                footrest_pole_length,
+                footrest_pole_length + raise_height,
                 total_width,
                 footrest_pole_length
             ]
