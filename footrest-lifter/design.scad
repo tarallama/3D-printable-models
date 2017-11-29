@@ -1,10 +1,12 @@
 $fn = 100;
 footrest_pole_radius = 13/2;
 footrest_pole_length = 30;
-extra_width = 70;
-extra_depth = 50;
 
-module connector()
+module connector
+(
+    extra_width = 0,
+    extra_depth = 0
+)
 {
     gripper_width = 6;
     total_width = footrest_pole_radius * 2 + gripper_width;
@@ -24,7 +26,9 @@ module connector()
             lifter
             (
                 total_width = total_width,
-                raise_height = 160
+                raise_height = 160,
+                extra_width = extra_width,
+                extra_depth = extra_depth
             );
         }
 
@@ -62,7 +66,9 @@ module connector()
 module lifter
 (
     total_width = 1,
-    raise_height = 1
+    raise_height = 1,
+    extra_width = 0,
+    extra_depth = 0
 )
 {
     hull()
@@ -111,7 +117,11 @@ module lifter
 
 module mainBody()
 {
-    connector();
+    connector
+    (
+        extra_width = 70,
+        extra_depth = 50
+    );
 }
 
 module main()
