@@ -1,8 +1,8 @@
 $fn = 100;
 footrest_pole_radius = 13/2;
 footrest_pole_length = 30;
-extra_width = 50;
-extra_height = 35;
+extra_width = 70;
+extra_depth = 50;
 
 module connector()
 {
@@ -31,7 +31,7 @@ module connector()
         //Drill out interior
         cylinder
         (
-            h = footrest_pole_length + extra_height,
+            h = footrest_pole_length + extra_depth,
             r = footrest_pole_radius,
             center = false
         );
@@ -102,7 +102,7 @@ module lifter
                 [
                     1,
                     total_width + extra_width,
-                    footrest_pole_length + extra_height
+                    footrest_pole_length + extra_depth
                 ]
             );
         }
