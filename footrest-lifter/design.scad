@@ -1,6 +1,6 @@
 $fn = 100;
 footrest_pole_radius = 13/2;
-footrest_pole_length = 10; //360;
+footrest_pole_length = 20;
 
 module connector()
 {
@@ -63,23 +63,48 @@ module lifter
     raise_height = 1
 )
 {
-    translate
-    (
-        [
-            -footrest_pole_length - raise_height,
-            -total_width / 2,
-            0
-        ]
-    )
+    hull()
     {
-        cube
+        //Vertical structure
+        translate
         (
             [
-                footrest_pole_length + raise_height,
-                total_width,
-                footrest_pole_length
+                -footrest_pole_length - raise_height,
+                -total_width / 2,
+                0
             ]
-        );
+        )
+        {
+            cube
+            (
+                [
+                    footrest_pole_length + raise_height,
+                    total_width,
+                    footrest_pole_length
+                ]
+            );
+        }
+
+        //Stabilization foot
+        extra_width = 40;
+        translate
+        (
+            [
+                -footrest_pole_length - raise_height,
+                - (total_width + extra_width) / 2,
+                0
+            ]
+        )
+        {
+            cube
+            (
+                [
+                    1,
+                    total_width + extra_width,
+                    footrest_pole_length
+                ]
+            );
+        }
     }
 }
 
