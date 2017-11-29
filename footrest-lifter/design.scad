@@ -87,6 +87,7 @@ module lifter
 
         //Stabilization foot
         extra_width = 40;
+        extra_height = 20;
         translate
         (
             [
@@ -101,7 +102,7 @@ module lifter
                 [
                     1,
                     total_width + extra_width,
-                    footrest_pole_length
+                    footrest_pole_length + extra_height
                 ]
             );
         }
