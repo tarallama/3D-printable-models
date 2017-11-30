@@ -169,13 +169,14 @@ module front_to_back_connector
     }
 }
 
-module mainBody()
+module two_connected_pillars
+(
+    pillar_depth_separation = 370,
+    extra_width = 60,
+    extra_depth = 40,
+    raise_height = 140
+)
 {
-    pillar_depth_separation = 370;
-    extra_width = 60;
-    extra_depth = 40;
-    raise_height = 140;
-
     //Front
     moved_pillar
     (
@@ -204,7 +205,7 @@ module main()
 {
     rotate(a=[0,90,0])
     {
-        mainBody();
+        two_connected_pillars();
     }
 }
 
