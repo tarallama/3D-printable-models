@@ -5,7 +5,8 @@ footrest_pole_length = 30;
 module pillar
 (
     extra_width = 0,
-    extra_depth = 0
+    extra_depth = 0,
+    raise_height = 1
 )
 {
     gripper_width = 6;
@@ -26,7 +27,7 @@ module pillar
             lifter
             (
                 total_width = total_width,
-                raise_height = 160,
+                raise_height = raise_height,
                 extra_width = extra_width,
                 extra_depth = extra_depth
             );
@@ -68,7 +69,8 @@ module lifter
     total_width = 1,
     raise_height = 1,
     extra_width = 0,
-    extra_depth = 0
+    extra_depth = 0,
+    raise_height = 1
 )
 {
     hull()
@@ -117,16 +119,66 @@ module lifter
 
 module mainBody()
 {
-    pillar
+    pillar_depth_separation = 370;
+    extra_width = 60;
+    extra_depth = 40;
+    raise_height = 160;
+    rotate(a=[0,270,0])
+    {
+        pillar
+        (
+            extra_width = extra_width,
+            extra_depth = extra_depth,
+            raise_height = raise_height
+        );
+    }
+
+    translate
     (
-        extra_width = 70,
-        extra_depth = 50
-    );
+        [
+            0,
+            pillar_depth_separation,
+            0
+        ]
+    )
+    {
+        rotate(a=[0,270,0])
+        {
+            pillar
+            (
+                extra_width = extra_width,
+                extra_depth = extra_depth,
+                raise_height = raise_height
+            );
+        }
+    }
+
+    connector_height = 20;
+    connector_depth = footrest_pole_length;
+    translate
+    (
+        [
+            - connector_depth,
+            0,
+            - (raise_height + connector_height)
+        ]
+    )
+    {
+        cube
+        (
+            size =
+            [
+                connector_depth,
+                pillar_depth_separation,
+                connector_height
+            ]
+        );
+    }
 }
 
 module main()
 {
-    rotate(a=[0,0,0])
+    rotate(a=[0,90,0])
     {
         mainBody();
     }
