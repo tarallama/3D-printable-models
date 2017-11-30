@@ -171,41 +171,93 @@ module front_to_back_connector
 
 module two_connected_pillars
 (
-    pillar_depth_separation = 370,
-    extra_width = 60,
-    extra_depth = 40,
-    raise_height = 140
+    pillar_depth_separation,
+    extra_width,
+    extra_depth,
+    raise_height,
+    move = [0,0,0]
 )
 {
-    //Front
-    moved_pillar
-    (
-        extra_width = extra_width,
-        extra_depth = extra_depth,
-        raise_height = raise_height
-    );
+    translate(move)
+    {
+        //Front
+        moved_pillar
+        (
+            extra_width = extra_width,
+            extra_depth = extra_depth,
+            raise_height = raise_height
+        );
 
-    //Back
-    moved_pillar
-    (
-        extra_width = extra_width,
-        extra_depth = extra_depth,
-        raise_height = raise_height,
-        move = [0, pillar_depth_separation, 0]
-    );
+        //Back
+        moved_pillar
+        (
+            extra_width = extra_width,
+            extra_depth = extra_depth,
+            raise_height = raise_height,
+            move = [0, pillar_depth_separation, 0]
+        );
 
-    front_to_back_connector
-    (
-        raise_height = raise_height,
-        pillar_depth_separation = pillar_depth_separation
-    );
+        front_to_back_connector
+        (
+            raise_height = raise_height,
+            pillar_depth_separation = pillar_depth_separation
+        );
+    }
+}
+
+module flipped_pillars
+(
+    pillar_depth_separation,
+    extra_width,
+    extra_depth,
+    raise_height,
+    move
+)
+{
+    translate(move)
+    {
+        mirror([90, 0, 0])
+        {
+            two_connected_pillars
+            (
+                pillar_depth_separation,
+                extra_width,
+                extra_depth,
+                raise_height
+            );
+        }
+    }
 }
 
 module main()
 {
     rotate(a=[0,90,0])
     {
-        two_connected_pillars();
+        pillar_width_separation = 260;
+        pillar_depth_separation = 370;
+        extra_width = 60;
+        extra_depth = 40;
+        raise_height = 140;
+        //Left
+        two_connected_pillars
+        (
+            pillar_width_separation = pillar_width_separation,
+            pillar_depth_separation = pillar_depth_separation,
+            extra_width = extra_width,
+            extra_depth = extra_depth,
+            raise_height = raise_height
+        );
+
+        //Right
+        flipped_pillars
+        (
+            pillar_width_separation = pillar_width_separation,
+            pillar_depth_separation = pillar_depth_separation,
+            extra_width = extra_width,
+            extra_depth = extra_depth,
+            raise_height = raise_height,
+            move = [pillar_width_separation,0,0]
+        );
     }
 }
 
