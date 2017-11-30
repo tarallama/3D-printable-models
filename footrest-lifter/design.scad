@@ -162,12 +162,7 @@ module mainBody()
         extra_width = extra_width,
         extra_depth = extra_depth,
         raise_height = raise_height,
-        move =
-        [
-            0,
-            pillar_depth_separation,
-            0
-        ]
+        move = [0, pillar_depth_separation, 0]
     );
 
     connector_height = raise_height * 1.0;
