@@ -117,30 +117,16 @@ module lifter
     }
 }
 
-module mainBody()
-{
-    pillar_depth_separation = 370;
-    extra_width = 60;
-    extra_depth = 40;
-    raise_height = 140;
-    rotate(a=[0,270,0])
-    {
-        pillar
-        (
-            extra_width = extra_width,
-            extra_depth = extra_depth,
-            raise_height = raise_height
-        );
-    }
 
-    translate
-    (
-        [
-            0,
-            pillar_depth_separation,
-            0
-        ]
-    )
+module moved_pillar
+(
+    extra_width = 0,
+    extra_depth = 0,
+    raise_height = 0,
+    move = [0,0,0]
+)
+{
+    translate(move)
     {
         rotate(a=[0,270,0])
         {
@@ -152,6 +138,37 @@ module mainBody()
             );
         }
     }
+}
+
+
+module mainBody()
+{
+    pillar_depth_separation = 370;
+    extra_width = 60;
+    extra_depth = 40;
+    raise_height = 140;
+
+    //Front
+    moved_pillar
+    (
+        extra_width = extra_width,
+        extra_depth = extra_depth,
+        raise_height = raise_height
+    );
+
+    //Back
+    moved_pillar
+    (
+        extra_width = extra_width,
+        extra_depth = extra_depth,
+        raise_height = raise_height,
+        move =
+        [
+            0,
+            pillar_depth_separation,
+            0
+        ]
+    );
 
     connector_height = raise_height * 1.0;
     connector_depth = footrest_pole_length * 0.5;
