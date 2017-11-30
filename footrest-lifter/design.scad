@@ -1,6 +1,6 @@
 $fn = 100;
 footrest_pole_radius = 13/2;
-footrest_pole_length = 30;
+footrest_pole_length = 40;
 
 module pillar
 (
@@ -122,7 +122,7 @@ module mainBody()
     pillar_depth_separation = 370;
     extra_width = 60;
     extra_depth = 40;
-    raise_height = 160;
+    raise_height = 140;
     rotate(a=[0,270,0])
     {
         pillar
@@ -153,7 +153,7 @@ module mainBody()
         }
     }
 
-    connector_height = raise_height * 0.8;
+    connector_height = raise_height * 1.0;
     connector_depth = footrest_pole_length * 0.5;
     translate
     (
