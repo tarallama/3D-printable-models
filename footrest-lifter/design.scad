@@ -153,14 +153,14 @@ module mainBody()
         }
     }
 
-    connector_height = 20;
-    connector_depth = footrest_pole_length;
+    connector_height = raise_height * 0.8;
+    connector_depth = footrest_pole_length * 0.5;
     translate
     (
         [
             - connector_depth,
             0,
-            - (raise_height + connector_height)
+            - (raise_height + footrest_pole_length)
         ]
     )
     {
