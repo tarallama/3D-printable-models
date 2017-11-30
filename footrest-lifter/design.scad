@@ -140,6 +140,34 @@ module moved_pillar
     }
 }
 
+module front_to_back_connector
+(
+    raise_height = 0,
+    pillar_depth_separation = 0
+)
+{
+    connector_height = raise_height * 1.0;
+    connector_depth = footrest_pole_length * 0.5;
+    translate
+    (
+        [
+            - connector_depth,
+            0,
+            - (raise_height + footrest_pole_length)
+        ]
+    )
+    {
+        cube
+        (
+            size =
+            [
+                connector_depth,
+                pillar_depth_separation,
+                connector_height
+            ]
+        );
+    }
+}
 
 module mainBody()
 {
@@ -165,27 +193,11 @@ module mainBody()
         move = [0, pillar_depth_separation, 0]
     );
 
-    connector_height = raise_height * 1.0;
-    connector_depth = footrest_pole_length * 0.5;
-    translate
+    front_to_back_connector
     (
-        [
-            - connector_depth,
-            0,
-            - (raise_height + footrest_pole_length)
-        ]
-    )
-    {
-        cube
-        (
-            size =
-            [
-                connector_depth,
-                pillar_depth_separation,
-                connector_height
-            ]
-        );
-    }
+        raise_height = raise_height,
+        pillar_depth_separation = pillar_depth_separation
+    );
 }
 
 module main()
