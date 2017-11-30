@@ -2,7 +2,7 @@ $fn = 100;
 footrest_pole_radius = 13/2;
 footrest_pole_length = 30;
 
-module connector
+module pillar
 (
     extra_width = 0,
     extra_depth = 0
@@ -117,7 +117,7 @@ module lifter
 
 module mainBody()
 {
-    connector
+    pillar
     (
         extra_width = 70,
         extra_depth = 50
