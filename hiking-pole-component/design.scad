@@ -5,7 +5,7 @@ coneHeight = 6;
 coneLowerDiam = 11.5/2;
 coneZPos = height-coneHeight-1;
 cylHeight = 4;
-use <ISOThread.scad>; //Thanks a bunch to TrevM, downloaded from https://www.thingiverse.com/thing:311031
+use <lib/ISOThread.scad>; //Thanks a bunch to TrevM, downloaded from https://www.thingiverse.com/thing:311031
 
 module mainBody () 
 {
