@@ -261,14 +261,8 @@ module main()
     bridge_diameter = 10;
     bridge_install_depth = 20;
     bridge_length = bridge_install_depth*2 + pillar_width_separation;
-    translate
-    (
-        [
-            - bridge_install_depth,
-            0,
-            - raise_height * 0.4
-        ]
-    )
+    movement = [ - bridge_install_depth, 0, - raise_height * 0.4];
+    translate(movement)
     {
         rotate([0,90,0])
         {
