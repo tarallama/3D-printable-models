@@ -303,28 +303,31 @@ module main()
         move = [pillar_width_separation,0,0]
     );
 
-    //Front
-    bridge_set
-    (
-        pillar_width_separation = pillar_width_separation,
-        raise_height = raise_height
-    );
+    color("red")
+    {
+        //Front
+        bridge_set
+        (
+            pillar_width_separation = pillar_width_separation,
+            raise_height = raise_height
+        );
 
-    //Middle
-    bridge_set
-    (
-        pillar_width_separation = pillar_width_separation,
-        raise_height = raise_height,
-        move = [0,pillar_depth_separation/2,0]
-    );
+        //Middle
+        bridge_set
+        (
+            pillar_width_separation = pillar_width_separation,
+            raise_height = raise_height,
+            move = [0,pillar_depth_separation/2,0]
+        );
 
-    //Back
-    bridge_set
-    (
-        pillar_width_separation = pillar_width_separation,
-        raise_height = raise_height,
-        move = [0,pillar_depth_separation,0]
-    );
+        //Back
+        bridge_set
+        (
+            pillar_width_separation = pillar_width_separation,
+            raise_height = raise_height,
+            move = [0,pillar_depth_separation,0]
+        );
+    }
 }
 
 main();
