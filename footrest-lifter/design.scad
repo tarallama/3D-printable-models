@@ -275,6 +275,41 @@ module bridge_set
     }
 }
 
+
+module all_bridge_connectors
+(
+    pillar_width_separation,
+    raise_height,
+    pillar_depth_separation
+)
+{
+    color("red")
+    {
+        //Front
+        bridge_set
+        (
+            pillar_width_separation = pillar_width_separation,
+            raise_height = raise_height
+        );
+
+        //Middle
+        bridge_set
+        (
+            pillar_width_separation = pillar_width_separation,
+            raise_height = raise_height,
+            move = [0,pillar_depth_separation/2,0]
+        );
+
+        //Back
+        bridge_set
+        (
+            pillar_width_separation = pillar_width_separation,
+            raise_height = raise_height,
+            move = [0,pillar_depth_separation,0]
+        );
+    }
+}
+
 //Mockup of fully assembled version of model
 module assembley
 (
@@ -306,31 +341,12 @@ module assembley
         move = [pillar_width_separation,0,0]
     );
 
-    color("red")
-    {
-        //Front
-        bridge_set
-        (
-            pillar_width_separation = pillar_width_separation,
-            raise_height = raise_height
-        );
-
-        //Middle
-        bridge_set
-        (
-            pillar_width_separation = pillar_width_separation,
-            raise_height = raise_height,
-            move = [0,pillar_depth_separation/2,0]
-        );
-
-        //Back
-        bridge_set
-        (
-            pillar_width_separation = pillar_width_separation,
-            raise_height = raise_height,
-            move = [0,pillar_depth_separation,0]
-        );
-    }
+    all_bridge_connectors
+    (
+        pillar_width_separation = pillar_width_separation,
+        raise_height = raise_height,
+        pillar_depth_separation = pillar_depth_separation
+    );
 }
 
 module main()
