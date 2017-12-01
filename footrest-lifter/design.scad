@@ -275,13 +275,16 @@ module bridge_set
     }
 }
 
-module main()
+//Mockup of fully assembled version of model
+module assembley
+(
+    pillar_width_separation,
+    pillar_depth_separation,
+    extra_width,
+    extra_depth,
+    raise_height
+)
 {
-    pillar_width_separation = 260;
-    pillar_depth_separation = 370;
-    extra_width = 60;
-    extra_depth = 40;
-    raise_height = 140;
     //Left
     two_connected_pillars
     (
@@ -328,6 +331,24 @@ module main()
             move = [0,pillar_depth_separation,0]
         );
     }
+}
+
+module main()
+{
+    pillar_width_separation = 260;
+    pillar_depth_separation = 370;
+    extra_width = 60;
+    extra_depth = 40;
+    raise_height = 140;
+
+    assembley
+    (
+        pillar_width_separation = pillar_width_separation,
+        pillar_depth_separation = pillar_depth_separation,
+        extra_width = extra_width,
+        extra_depth = extra_depth,
+        raise_height = raise_height
+    );
 }
 
 main();
