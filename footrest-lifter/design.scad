@@ -231,33 +231,53 @@ module flipped_pillars
 
 module main()
 {
-    rotate(a=[0,90,0])
-    {
-        pillar_width_separation = 260;
-        pillar_depth_separation = 370;
-        extra_width = 60;
-        extra_depth = 40;
-        raise_height = 140;
-        //Left
-        two_connected_pillars
-        (
-            pillar_width_separation = pillar_width_separation,
-            pillar_depth_separation = pillar_depth_separation,
-            extra_width = extra_width,
-            extra_depth = extra_depth,
-            raise_height = raise_height
-        );
+    pillar_width_separation = 260;
+    pillar_depth_separation = 370;
+    extra_width = 60;
+    extra_depth = 40;
+    raise_height = 140;
+    //Left
+    two_connected_pillars
+    (
+        pillar_width_separation = pillar_width_separation,
+        pillar_depth_separation = pillar_depth_separation,
+        extra_width = extra_width,
+        extra_depth = extra_depth,
+        raise_height = raise_height
+    );
 
-        //Right
-        flipped_pillars
-        (
-            pillar_width_separation = pillar_width_separation,
-            pillar_depth_separation = pillar_depth_separation,
-            extra_width = extra_width,
-            extra_depth = extra_depth,
-            raise_height = raise_height,
-            move = [pillar_width_separation,0,0]
-        );
+    //Right
+    flipped_pillars
+    (
+        pillar_width_separation = pillar_width_separation,
+        pillar_depth_separation = pillar_depth_separation,
+        extra_width = extra_width,
+        extra_depth = extra_depth,
+        raise_height = raise_height,
+        move = [pillar_width_separation,0,0]
+    );
+
+    //Bridge connectors
+    bridge_diameter = 10;
+    bridge_install_depth = 20;
+    bridge_length = bridge_install_depth*2 + pillar_width_separation;
+    translate
+    (
+        [
+            - bridge_install_depth,
+            0,
+            - raise_height * 0.4
+        ]
+    )
+    {
+        rotate([0,90,0])
+        {
+            cylinder
+            (
+                h = bridge_length,
+                d = bridge_diameter
+            );
+        }
     }
 }
 
