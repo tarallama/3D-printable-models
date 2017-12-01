@@ -252,6 +252,29 @@ module bridge
     }
 }
 
+module bridge_set
+(
+    pillar_width_separation,
+    raise_height,
+    move = [0,0,0]
+)
+{
+    translate(move)
+    {
+        bridge
+        (
+            pillar_width_separation = pillar_width_separation,
+            movement = [ 0, 0, - raise_height * 0.4]
+        );
+
+        bridge
+        (
+            pillar_width_separation = pillar_width_separation,
+            movement = [ 0, 0, - raise_height * 1.0]
+        );
+    }
+}
+
 module main()
 {
     pillar_width_separation = 260;
@@ -280,10 +303,27 @@ module main()
         move = [pillar_width_separation,0,0]
     );
 
-    bridge
+    //Front
+    bridge_set
     (
         pillar_width_separation = pillar_width_separation,
-        movement = [ 0, 0, - raise_height * 0.4]
+        raise_height = raise_height
+    );
+
+    //Middle
+    bridge_set
+    (
+        pillar_width_separation = pillar_width_separation,
+        raise_height = raise_height,
+        move = [0,pillar_depth_separation/2,0]
+    );
+
+    //Back
+    bridge_set
+    (
+        pillar_width_separation = pillar_width_separation,
+        raise_height = raise_height,
+        move = [0,pillar_depth_separation,0]
     );
 }
 
