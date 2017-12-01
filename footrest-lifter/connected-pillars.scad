@@ -1,13 +1,15 @@
 use <design.scad>;
+include <lib/puzzlecutlib.scad>;
 
 module main()
 {
     pillar_width_separation = 260;
     pillar_depth_separation = 370;
-    extra_width = 60;
+    extra_width = 40;
     extra_depth = 40;
     raise_height = 140;
 
+    translate([0,-155,0])
     rotate([0,90,0])
     {
         difference()
@@ -31,4 +33,17 @@ module main()
     }
 }
 
-main();
+module cutInTwo()
+{
+	translate([0,-cutSize * 2,0])
+		xMaleCut() main();
+
+	translate([0,0,0])
+		xFemaleCut() main();
+}
+
+stampSize = [500,500,500];
+cutSize = 15;
+xCut1 = [-150, -70];
+kerf = -0.3;
+cutInTwo();
