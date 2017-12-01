@@ -1,0 +1,2 @@
+# Notes
+Lifts up a very simple style of footrest for use with a tall stool and standing-height desk. Print 2 of "connected-pillars". You can use some wooden dowels or print 6 of "single-bridge-connector".
