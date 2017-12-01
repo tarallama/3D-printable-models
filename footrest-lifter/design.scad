@@ -229,6 +229,29 @@ module flipped_pillars
     }
 }
 
+
+module bridge
+(
+    pillar_width_separation,
+    bridge_diameter = 15,
+    bridge_install_depth = 20,
+    movement = [ 0, 0, 0 ]
+)
+{
+    bridge_length = bridge_install_depth*2 + pillar_width_separation;
+    translate(movement) translate([-bridge_install_depth,0,0])
+    {
+        rotate([0,90,0])
+        {
+            cylinder
+            (
+                h = bridge_length,
+                d = bridge_diameter
+            );
+        }
+    }
+}
+
 module main()
 {
     pillar_width_separation = 260;
@@ -257,22 +280,11 @@ module main()
         move = [pillar_width_separation,0,0]
     );
 
-    //Bridge connectors
-    bridge_diameter = 10;
-    bridge_install_depth = 20;
-    bridge_length = bridge_install_depth*2 + pillar_width_separation;
-    movement = [ - bridge_install_depth, 0, - raise_height * 0.4];
-    translate(movement)
-    {
-        rotate([0,90,0])
-        {
-            cylinder
-            (
-                h = bridge_length,
-                d = bridge_diameter
-            );
-        }
-    }
+    bridge
+    (
+        pillar_width_separation = pillar_width_separation,
+        movement = [ 0, 0, - raise_height * 0.4]
+    );
 }
 
 main();
