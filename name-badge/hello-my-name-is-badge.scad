@@ -87,7 +87,7 @@ module holes
     }
 }
 
-module makeTag
+module helloMyNameIsBadge
 (
     width = 120,
     height = 80,
@@ -161,4 +161,4 @@ module makeTag
     );
 }
 
-makeTag();
+helloMyNameIsBadge();
