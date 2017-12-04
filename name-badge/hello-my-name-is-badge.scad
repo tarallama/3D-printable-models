@@ -135,23 +135,7 @@ module helloMyNameIsBadge
         }
     }
 
-    translate
-    (
-        [
-            0,
-            -nameSize + nameOffset,
-            thickness / 2
-        ]
-    )
-    {
-        textExtrude
-        (
-            message = yourName,
-            textSize = nameSize,
-            textHeight = textThickness
-        );
-    }
-
+    //Main structural backplate
     base
     (
         xSize = width,
@@ -159,6 +143,56 @@ module helloMyNameIsBadge
         zSize = thickness,
         holeDia = holeDiameter
     );
+
+    difference()
+    {
+        translate
+        (
+            [
+                0,
+                0,
+                thickness
+            ]
+        )
+        {
+            base
+            (
+                xSize = width,
+                ySize = height,
+                zSize = textThickness,
+                holeDia = holeDiameter
+            );
+        }
+
+        translate
+        (
+            [
+                - width / 2,
+                - height / 2 + height * 0.5,
+                - thickness / 2 + thickness
+            ]
+        )
+        {
+            cube(size = [width, height, textThickness]);
+        }
+
+        translate
+        (
+            [
+                0,
+                -nameSize + nameOffset,
+                thickness / 2
+            ]
+        )
+        {
+            textExtrude
+            (
+                message = yourName,
+                textSize = nameSize,
+                textHeight = textThickness
+            );
+        }
+    }
 }
 
 helloMyNameIsBadge();
