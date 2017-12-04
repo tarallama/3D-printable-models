@@ -75,10 +75,10 @@ module base
 
         holes
         (
-                xSize,
-                ySize,
-                zSize,
-                holeDia
+            xSize,
+            ySize,
+            zSize,
+            holeDia
         );
     }
 }
@@ -93,9 +93,13 @@ module holes
 {
     holeRad = holeDia/2;
     translate([-xSize/2+holeDia, ySize/2-holeDia, 0])
+    {
         cylinder(r = holeRad, h = 2*zSize, center = true);
+    }
     translate([xSize/2-holeDia, ySize/2-holeDia, 0])
+    {
         cylinder(r = holeRad, h = 2*zSize, center = true);
+    }
 }
 
 module makeTag()
