@@ -62,12 +62,17 @@ module base
         ySize,
         zSize
     ];
-    roundedBox
-    (
-        baseSize,
-        radius = 3,
-        sidesonly = 1
-    );
+    difference()
+    {
+        roundedBox
+        (
+            baseSize,
+            radius = 3,
+            sidesonly = 1
+        );
+
+        holes();
+    }
 }
 
 xSize = 45; // length
@@ -84,6 +89,7 @@ module holes
     translate([xSize/2-holeDia, ySize/2-holeDia, 0])
         cylinder(r = holeRad, h = 2*zSize, $fn = 36, center = true);
 }
+
 
 module makeTag()
 {
