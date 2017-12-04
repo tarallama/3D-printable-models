@@ -2,3 +2,4 @@
 *.gcode
 *.txt
 !notes.txt
+private
