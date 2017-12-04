@@ -9,7 +9,7 @@ include <MCAD/boxes.scad>
 
 module textExtrude
 (
-    textHeight = textThickness,
+    textHeight = 2,
     textSize = 7.5,
     message = "test",
     textColor = "black", // [green, yellow, blue, red, silver, black]
