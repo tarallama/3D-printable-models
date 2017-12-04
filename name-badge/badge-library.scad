@@ -195,4 +195,52 @@ module helloMyNameIsBadge
     }
 }
 
-helloMyNameIsBadge();
+module generic_badge
+(
+    width = 125,
+    height = 60,
+    thickness = 2,
+    holeDiameter = 7,
+    topText = "Top Text",
+    botText = "Bottom"
+)
+{
+    base
+    (
+        xSize = width,
+        ySize = height,
+        zSize = thickness,
+        holeDia = holeDiameter
+    );
+
+    translate
+    (
+        [
+            0,
+            height / 2 * 0.4,
+            0
+        ]
+    )
+    {
+        textExtrude
+        (
+            message = topText
+        );
+    }
+
+    translate
+    (
+        [
+            0,
+            - height / 2 * 0.35,
+            0
+        ]
+    )
+    {
+        textExtrude
+        (
+            textSize = 20,
+            message = botText
+        );
+    }
+}
