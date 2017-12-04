@@ -4,7 +4,7 @@
   16 December 2015
 */
 
-$fn = 25;
+$fn = 50;
 include <MCAD/boxes.scad>
 
 yourName = "PERSON"; //Type your name inside these quotes
@@ -13,6 +13,7 @@ yourName = "PERSON"; //Type your name inside these quotes
 width = 120;
 height = 80;
 thickness = 2;
+holeDiameter = 7;
 
 //Text
 textThickness = 2;
@@ -51,9 +52,10 @@ module textExtrude
 
 module base
 (
-    xSize = 48,
-    ySize = 25,
-    zSize = 3
+    xSize,
+    ySize,
+    zSize,
+    holeDia
 )
 {
     baseSize =
@@ -71,25 +73,30 @@ module base
             sidesonly = 1
         );
 
-        holes();
+        holes
+        (
+                xSize,
+                ySize,
+                zSize,
+                holeDia
+        );
     }
 }
 
-xSize = 45; // length
-ySize = 15; // height
-zSize = 3; //thickness
-holeDia = 3.5; // hole diameter
-holeRad = holeDia/2;
 module holes
 (
+    xSize,
+    ySize,
+    zSize,
+    holeDia
 )
 {
+    holeRad = holeDia/2;
     translate([-xSize/2+holeDia, ySize/2-holeDia, 0])
-        cylinder(r = holeRad, h = 2*zSize, $fn = 36, center = true);
+        cylinder(r = holeRad, h = 2*zSize, center = true);
     translate([xSize/2-holeDia, ySize/2-holeDia, 0])
-        cylinder(r = holeRad, h = 2*zSize, $fn = 36, center = true);
+        cylinder(r = holeRad, h = 2*zSize, center = true);
 }
-
 
 module makeTag()
 {
@@ -145,7 +152,8 @@ module makeTag()
     (
         xSize = width,
         ySize = height,
-        zSize = thickness
+        zSize = thickness,
+        holeDia = holeDiameter
     );
 }
 
