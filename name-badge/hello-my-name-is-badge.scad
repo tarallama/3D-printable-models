@@ -94,7 +94,7 @@ module helloMyNameIsBadge
     thickness = 2,
     holeDiameter = 7,
     yourName = "PERSON",
-    textThickness = 2,
+    detailThickness = 2,
     headerOffset = 10,
     headerSize = 14,
     nameOffset = 0,
@@ -114,7 +114,7 @@ module helloMyNameIsBadge
         (
             message = "HELLO",
             textSize = headerSize,
-            textHeight = textThickness
+            textHeight = detailThickness
         );
 
         translate
@@ -130,7 +130,7 @@ module helloMyNameIsBadge
             (
                 message = "MY NAME IS",
                 textSize = headerSize * (2 / 5),
-                textHeight = textThickness
+                textHeight = detailThickness
             );
         }
     }
@@ -159,7 +159,7 @@ module helloMyNameIsBadge
             (
                 xSize = width,
                 ySize = height,
-                zSize = textThickness,
+                zSize = detailThickness,
                 holeDia = holeDiameter
             );
         }
@@ -173,7 +173,7 @@ module helloMyNameIsBadge
             ]
         )
         {
-            cube(size = [width, height, textThickness]);
+            cube(size = [width, height, detailThickness]);
         }
 
         translate
@@ -189,7 +189,7 @@ module helloMyNameIsBadge
             (
                 message = yourName,
                 textSize = nameSize,
-                textHeight = textThickness
+                textHeight = detailThickness
             );
         }
     }
