@@ -4,7 +4,6 @@
   16 December 2015
 */
 
-$fn = 10;
 include <MCAD/boxes.scad>
 
 module textExtrude
