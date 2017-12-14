@@ -1,4 +1,4 @@
-$fs = .1;
+$fn = 200;
 radius = 32/2;
 height = 1;
 
