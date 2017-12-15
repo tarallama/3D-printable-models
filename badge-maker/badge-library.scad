@@ -202,7 +202,9 @@ module generic_badge
     detailThickness = 2,
     holeDiameter = 7,
     topText = "Top Text",
-    botText = "Bottom"
+    topTextSize = 7.5,
+    botText = "Bottom",
+    botTextSize = 20
 )
 {
     base
@@ -224,6 +226,7 @@ module generic_badge
     {
         textExtrude
         (
+            textSize = topTextSize,
             message = topText,
             textHeight = detailThickness
         );
@@ -240,7 +243,7 @@ module generic_badge
     {
         textExtrude
         (
-            textSize = 20,
+            textSize = botTextSize,
             textHeight = detailThickness,
             message = botText
         );
