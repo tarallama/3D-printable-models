@@ -256,7 +256,8 @@ module bridge_set
 (
     pillar_width_separation,
     raise_height,
-    move = [0,0,0]
+    move = [0,0,0],
+    bridge_diameter
 )
 {
     translate(move)
@@ -264,13 +265,15 @@ module bridge_set
         bridge
         (
             pillar_width_separation = pillar_width_separation,
-            movement = [ 0, 0, - raise_height * 0.4]
+            movement = [ 0, 0, - raise_height * 0.4],
+            bridge_diameter = bridge_diameter
         );
 
         bridge
         (
             pillar_width_separation = pillar_width_separation,
-            movement = [ 0, 0, - raise_height * 1.0]
+            movement = [ 0, 0, - raise_height * 1.0],
+            bridge_diameter = bridge_diameter
         );
     }
 }
@@ -280,7 +283,8 @@ module all_bridge_connectors
 (
     pillar_width_separation,
     raise_height,
-    pillar_depth_separation
+    pillar_depth_separation,
+    bridge_diameter,
 )
 {
     color("red")
@@ -289,7 +293,8 @@ module all_bridge_connectors
         bridge_set
         (
             pillar_width_separation = pillar_width_separation,
-            raise_height = raise_height
+            raise_height = raise_height,
+            bridge_diameter = bridge_diameter
         );
 
         //Middle
@@ -297,7 +302,8 @@ module all_bridge_connectors
         (
             pillar_width_separation = pillar_width_separation,
             raise_height = raise_height,
-            move = [0,pillar_depth_separation/2,0]
+            move = [0,pillar_depth_separation/2,0],
+            bridge_diameter = bridge_diameter
         );
 
         //Back
@@ -305,7 +311,8 @@ module all_bridge_connectors
         (
             pillar_width_separation = pillar_width_separation,
             raise_height = raise_height,
-            move = [0,pillar_depth_separation,0]
+            move = [0,pillar_depth_separation,0],
+            bridge_diameter = bridge_diameter
         );
     }
 }
@@ -317,7 +324,8 @@ module assembley
     pillar_depth_separation,
     extra_width,
     extra_depth,
-    raise_height
+    raise_height,
+    bridge_diameter
 )
 {
     //Left
@@ -345,7 +353,8 @@ module assembley
     (
         pillar_width_separation = pillar_width_separation,
         raise_height = raise_height,
-        pillar_depth_separation = pillar_depth_separation
+        pillar_depth_separation = pillar_depth_separation,
+        bridge_diameter = bridge_diameter
     );
 }
 
@@ -356,6 +365,7 @@ module main()
     extra_width = 60;
     extra_depth = 40;
     raise_height = 140;
+    bridge_diameter = 16;
 
     assembley
     (
@@ -363,7 +373,8 @@ module main()
         pillar_depth_separation = pillar_depth_separation,
         extra_width = extra_width,
         extra_depth = extra_depth,
-        raise_height = raise_height
+        raise_height = raise_height,
+        bridge_diameter = bridge_diameter
     );
 }
 

@@ -27,7 +27,8 @@ module main()
             (
                 pillar_width_separation = pillar_width_separation,
                 raise_height = raise_height,
-                pillar_depth_separation = pillar_depth_separation
+                pillar_depth_separation = pillar_depth_separation,
+                bridge_diameter = bridge_diameter
             );
         }
     }
