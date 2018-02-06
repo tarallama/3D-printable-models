@@ -8,8 +8,9 @@ module main()
     extra_width = 40;
     extra_depth = 40;
     raise_height = 140;
+    bridge_diameter = 17;
 
-    translate([0,-155,0])
+    translate([0,-145,0])
     rotate([0,90,0])
     {
         difference()
@@ -44,7 +45,8 @@ module cutInTwo()
 }
 
 stampSize = [500,500,500];
-cutSize = 15;
+cutSize = 17;
 xCut1 = [-150, -70];
-kerf = -0.3;
+kerf = -1.3;
+
 cutInTwo();
