@@ -49,4 +49,22 @@ cutSize = 17;
 xCut1 = [-150, -70];
 kerf = -1.3;
 
+module kerf_test()
+{
+    intersection()
+    {
+        cutInTwo();
+        translate([-85,-40,0]) cube([30,60,15]);
+    }
+}
+
+module hole_test()
+{
+    intersection()
+    {
+        main();
+        translate([-68,18,0]) cube([25,25,25]);
+    }
+}
+
 cutInTwo();
